@@ -100,8 +100,8 @@ hr:before {
   transition: all 1s ease-in-out;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  font-weight: 600;
-  font-family: 'Font Awesome 5 Free';
+  font-weight: normal;
+  font-family: FontAwesome;
 }
 iframe {
   margin: 0 0 1rem;
@@ -1825,6 +1825,65 @@ blockquote footer cite:before {
 .highlight-close {
   height: 0 !important;
 }
+#nav.error-no-found {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100vh;
+}
+#nav.error-no-found:before {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  content: '';
+}
+#nav.error-no-found #error_info {
+  position: absolute;
+  padding: 0 4rem;
+  width: 100%;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+#nav.error-no-found #error_info #error_title,
+#nav.error-no-found #error_info #error_subtitle {
+  margin: 0;
+  padding: 0;
+  color: #eee;
+  letter-spacing: 5px;
+  font-family: Titillium Web, PingFang SC, Hiragino Sans GB, "Microsoft YaHei", Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+#nav.error-no-found #error_info #error_title {
+  font-size: 10rem;
+}
+#nav.error-no-found #error_info #error_subtitle {
+  font-size: 2rem;
+}
+@media screen and (max-width: 768px) {
+  #nav.error-no-found #error_info {
+    padding: 0 2rem;
+  }
+  #nav.error-no-found #error_info #error_title {
+    font-size: 7rem !important;
+  }
+  #nav.error-no-found #error_info #error_subtitle {
+    font-size: 1rem !important;
+  }
+}
 #aside_content {
   width: 25%;
 }
@@ -3002,8 +3061,7 @@ figure.gallery-group .gallery-group-name:after {
   top: 13px;
   left: 15px;
   font-size: larger;
-  font-weight: 600;
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'FontAwesome';
 }
 .note.default {
   background-color: #f7f7f7;
