@@ -100,8 +100,8 @@ hr:before {
   transition: all 1s ease-in-out;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
-  font-weight: normal;
-  font-family: FontAwesome;
+  font-weight: 600;
+  font-family: 'Font Awesome 5 Free';
 }
 iframe {
   margin: 0 0 1rem;
@@ -3002,7 +3002,8 @@ figure.gallery-group .gallery-group-name:after {
   top: 13px;
   left: 15px;
   font-size: larger;
-  font-family: 'FontAwesome';
+  font-weight: 600;
+  font-family: 'Font Awesome 5 Free';
 }
 .note.default {
   background-color: #f7f7f7;
