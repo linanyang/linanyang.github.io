@@ -1,6 +1,0 @@
-@media screen and (max-width: 768px) {
-  #aside_content div:not(:last-child) {
-    display: none;
-    font-size: 13px;
-  }
-}
