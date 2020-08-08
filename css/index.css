@@ -2469,9 +2469,9 @@ blockquote footer cite:before {
   content: '';
 }
 #footer-wrap {
-  position: absolute;
-  padding: 10rm;
-  color: #eee;
+  position: relative;
+  padding: 2rem 1rem;
+  color: var(--light-grey);
   text-align: center;
 }
 #footer-wrap a {
