@@ -3752,12 +3752,6 @@ img {
     font-size: 0.6rem;
   }
 }
-@media screen and (max-width: 768px) {
-  #aside_content div:not(:last-child) {
-    display: none;
-    font-size: 13px;
-  }
-}
 .relatedPosts {
   margin-top: 1rem;
 }
@@ -4083,7 +4077,7 @@ img {
   background: var(--btn-hover-color);
 }
 #vcomment textarea {
-  background: url("https://cdn.jsdelivr.net/gh/linanyang/Image_Hosting/themes/comments-bg.gif") 100% 100% no-repeat;
+  background: url("https://cdn.jsdelivr.net/gh/linanyang/image_hosting/themes/comments-bg.gif") 100% 100% no-repeat;
 }
 #vcomment .vimg {
   -webkit-transition: all 0.3s;
