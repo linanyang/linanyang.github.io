@@ -1320,7 +1320,7 @@ body {
   background: var(--global-bg);
   color: var(--font-color);
   font-size: 14px;
-  font-family: sleek;
+  font-family: sleek01;
   line-height: 2;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
