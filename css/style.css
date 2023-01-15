@@ -91,19 +91,26 @@ web_bg {
     color: #00c4b6;
 }
 
-/*移动端优化：去除归档、标签、最新文章、公告、、只保留网站统计*/
-@media screen and (max-width: 800px) {
-    #aside_content div:not(:last-child) {
-        display: none;
-        font-size: 13px;
-    }
+/*border 组件*/
+p.div-border{
+ background-color:var(--ColorA,transparent);
+ border:1px solid var(--Color,#333);
+ border-radius:.4rem;
+ padding:10px
 }
-
-/* 鱼塘固定宽度 */
-canvas:not(#ribbon-canvas), #web_bg {
-    margin-bottom: -0.5rem;
-    display: block;
-    width: 100%;
-    height: 160px
+p.left{
+ border-left-color:var(--Color);
+ border-left-width:5px
 }
-
+p.bottom{
+ border-bottom-color:var(--Color);
+ border-bottom-width:5px
+}
+p.right{
+ border-right-color:var(--Color);
+ border-right-width:5px
+}
+p.top{
+ border-top-color:var(--Color);
+ border-top-width:5px
+}
