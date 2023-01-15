@@ -1,5 +1,5 @@
 /*渐变背景*/
-web_bg {
+#web_bg {
   background: -webkit-linear-gradient(
     0deg,
     rgba(247, 149, 51, 0.1) 0,
@@ -122,4 +122,41 @@ p.right{
 p.top{
  border-top-color:var(--Color);
  border-top-width:5px
+}
+
+#footer{
+ -webkit-backdrop-filter:saturate(100%) blur(5px);
+ backdrop-filter:saturate(100%) blur(5px);
+ border-top-left-radius:20px;
+ border-top-right-radius:20px;
+ color:#000
+}
+#footer,#footer:before{
+ background:hsla(0,0%,100%,.15)
+}
+#footer #footer-wrap,#footer #footer-wrap a{
+ color:#333
+}
+#web_bg{
+ background:linear-gradient(90deg,rgba(247,149,51,.1),rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1))
+}
+::-webkit-scrollbar{
+ height:4px;
+ width:4px
+}
+::-webkit-scrollbar-track{
+ background-color:rgba(73,177,245,.2);
+ border-radius:2em
+}
+::-webkit-scrollbar-thumb{
+ background-color:#49b1f5;
+ background-image:-webkit-linear-gradient(45deg,hsla(0,0%,100%,.4) 25%,transparent 0,transparent 50%,hsla(0,0%,100%,.4) 0,hsla(0,0%,100%,.4) 75%,transparent 0,transparent);
+ border-radius:2em
+}
+::-webkit-scrollbar-corner{
+ background-color:transparent
+}
+::-moz-selection{
+ background-color:#49b1f5;
+ color:#fff
 }
