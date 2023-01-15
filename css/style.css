@@ -1,4 +1,4 @@
-# 渐变背景
+/*渐变背景*/
 web_bg {
   background: -webkit-linear-gradient(
     0deg,
@@ -56,42 +56,51 @@ web_bg {
     rgba(109, 186, 130, 0.1) 100%
   );
 }
-/* 文章页背景 */
-.layout > div:first-child:not(.recent-posts) {
-  /* 以下代表白色透明度为0.3 */
-  background: rgba(255, 255, 255, 0.3);
-}
-/* 所有背景（包括首页卡片、文章页、页面页等） */
-#recent-posts > .recent-post-item,
-.layout > div:first-child:not(.recent-posts),
-.layout_post > #page,
-.layout_post > #post,
-.read-mode .layout_post > #post {
-  /* 以下代表白色透明度为0.3 */
-  background: rgba(255, 255, 255, 0.3);
-}
 
-/* 版权链接去掉下划线 */
-.layout_post .post-copyright .post-copyright-info a {
-    text-decoration: none;
-    word-break: break-word;
+/*border 标签*/
+p.red,span.red{
+ --Color:#e91e64;
+ --ColorA:rgba(233,30,100,.2)
 }
-
-/*页脚a标签字体颜色*/
-#footer-wrap a {
-    color: #00c4b6;
+p.green,span.green{
+ --Color:#8bc34a;
+ --ColorA:rgba(139,195,74,.2)
 }
-
-/* 页脚文字位置 */
-#footer-wrap {
-    padding: 1.2rem 1rem 1.4rem
+p.blue,span.blue{
+ --Color:#03a9f4;
+ --ColorA:rgba(3,169,244,.2)
 }
-/*页脚自定义字段字体颜色*/
-.footer_custom_text {
-    color: #00c4b6;
+p.yellow,span.yellow{
+ --Color:#ffc107;
+ --ColorA:rgba(255,193,7,.2)
 }
-
-/*border 组件*/
+p.grey,span.grey{
+ --Color:#4c4c4c;
+ --ColorA:rgba(76,76,76,.2)
+}
+.font5{
+ background:#f6f6f6;
+ border-left-color:#767676;
+ display:block;
+ font-weight:500;
+ line-height:32px;
+ text-align:left;
+ width:100%
+}
+span.inline-tag{
+ background-color:var(--Color);
+ border-radius:.1rem;
+ border-radius:6px;
+ color:#fff;
+ display:inline;
+ font-size:90%;
+ font-weight:400;
+ line-height:1;
+ padding:.2em .6em .3em;
+ text-align:center;
+ vertical-align:baseline;
+ white-space:nowrap
+}
 p.div-border{
  background-color:var(--ColorA,transparent);
  border:1px solid var(--Color,#333);
