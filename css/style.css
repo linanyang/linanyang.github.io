@@ -70,3 +70,40 @@ web_bg {
   /* 以下代表白色透明度为0.3 */
   background: rgba(255, 255, 255, 0.3);
 }
+
+/* 版权链接去掉下划线 */
+.layout_post .post-copyright .post-copyright-info a {
+    text-decoration: none;
+    word-break: break-word;
+}
+
+/*页脚a标签字体颜色*/
+#footer-wrap a {
+    color: #00c4b6;
+}
+
+/* 页脚文字位置 */
+#footer-wrap {
+    padding: 1.2rem 1rem 1.4rem
+}
+/*页脚自定义字段字体颜色*/
+.footer_custom_text {
+    color: #00c4b6;
+}
+
+/*移动端优化：去除归档、标签、最新文章、公告、、只保留网站统计*/
+@media screen and (max-width: 800px) {
+    #aside_content div:not(:last-child) {
+        display: none;
+        font-size: 13px;
+    }
+}
+
+/* 鱼塘固定宽度 */
+canvas:not(#ribbon-canvas), #web_bg {
+    margin-bottom: -0.5rem;
+    display: block;
+    width: 100%;
+    height: 160px
+}
+
