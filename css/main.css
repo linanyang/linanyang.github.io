@@ -1,4 +1,4 @@
-/* 字体 */
+/* /* 字体 */
 @font-face{
     font-family:'aqqxs' ;  /* 字体名自定义即可 */
     src:url('https://cdn1.tianli0.top/gh/2x-ercha/cdn-for-try/fonts/FXAiQingQiXiangSuo.ttf'); /* 字体文件路径 */
@@ -17,7 +17,7 @@ a.blog-slider__title,
 .category-title,
 a.category-list-link {
     font-family: 'aqqxs', sans-serif;
-}
+} */
 
 /* 背景, 需要把主题配置文件中的background设置为 "#efefef" ，否则有可能不会生效 */
 #web_bg {
