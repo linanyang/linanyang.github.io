@@ -1,3 +1,49 @@
+:root {
+  --default-cursor: url(https://npm.elemecdn.com/eurkon-cdn/hexo/images/user/default.cur);
+  --pointer-cursor: url(https://npm.elemecdn.com/eurkon-cdn/hexo/images/user/pointer.cur);
+  --theme-color: #1677B3;
+  /* --global-bg: #F2F6FC;
+  --global-bg-lighter: rgba(242, 246, 252, .4); */
+  --global-bg-bolder: rgba(242, 246, 252, .8);
+  --r: 22;
+  --g: 119;
+  --b: 179;
+  --main: rgb(var(--r), var(--g), var(--b));
+  --second: var(--white);
+  --cover-bg: rgb(var(--r), var(--g), var(--b));
+  --main-lighter: rgba(var(--r), var(--g), var(--b), .4);
+  --main-bolder: rgba(var(--r), var(--g), var(--b), .8);
+  --box-shadow: 0 8px 12px -3px rgba(45, 45, 45, .05);
+  /* --box-shadow: 0 2px 3px 1px rgba(45, 45, 45, .05); */
+  --main-shadow: 0 8px 12px -3px rgba(var(--r), var(--g), var(--b), .2);
+  /* --main-shadow: 0 2px 3px 1px rgba(var(--r), var(--g), var(--b), .2); */
+  --card-border: 1px solid var(--tab-botton-bg);
+  --card-border-dashed: 2px dashed var(--tab-button-hover-bg);
+  --border-radius: .5rem;
+  --light-text: #FF7242;
+  --light-text-bg: rgba(255, 149, 63, .1);
+  --backdrop-filter: saturate(240%) blur(20px);
+}
+
+[data-theme='dark'] {
+  --global-bg: #000;
+  --global-bg-lighter: rgba(0, 0, 0, .4);
+  --global-bg-bolder: rgba(0, 0, 0, .8);
+  --main: #5C5C5C;
+  --second: #EEE !important;
+  --main-lighter: rgba(92, 92, 92, .4);
+  --main-bolder: rgba(92, 92, 92, .8);
+  --main-shadow: 0 2px 3px 1px rgba(92, 92, 92, .2);
+  --light-text: #FFB449;
+  --light-text-bg: rgba(255, 180, 73, .1);
+}
+
+[data-theme='dark'] #web_bg:before,
+[data-theme='dark'] #footer:before,
+[data-theme='dark'] #page-header:before {
+  display: none;
+}
+
 /* 背景, 需要把主题配置文件中的background设置为 "#efefef" ，否则有可能不会生效 */
 #web_bg {
   background: -webkit-linear-gradient(
@@ -403,6 +449,118 @@ h6::before {
     padding: 5px 15px;
     font-size: 1.2rem;
     margin: 5px;
+}
+
+/* 文章版权信息 */
+#post .post-copyright {
+  color: var(--second);
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--main);
+  -webkit-box-shadow: var(--main-shadow) !important;
+  -moz-box-shadow: var(--main-shadow) !important;
+  -ms-box-shadow: var(--main-shadow) !important;
+  -o-box-shadow: var(--main-shadow) !important;
+  box-shadow: var(--main-shadow) !important;
+  border: none;
+}
+
+#post .post-copyright:before {
+  color: var(--second);
+  right: -30px;
+  top: -110px;
+  content: '\f25e';
+  font-size: 180px;
+  font-family: 'Font Awesome 6 Brands';
+  opacity: .3;
+  filter: blur(1px);
+}
+
+#post .post-copyright__title {
+  color: var(--second);
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+#post .post-copyright__url {
+  opacity: .6;
+}
+#post .post-copyright__url a {
+  color: var(--second);
+}
+
+#post .post-copyright__cc a {
+  color: var(--second);
+  border-radius: 8px;
+  padding: .2rem;
+  font-weight: bold;
+}
+
+#post .post-copyright__cc a:hover {
+  color: var(--main);
+  background: var(--second);
+}
+
+#post .post-copyright #post-url-copy {
+  cursor: var(--pointer-cursor), pointer !important;
+  margin-left: .5rem;
+}
+
+/* 文章结尾标签 */
+#post .tag_share .post_share .social-share .social-share-icon {
+  /* width: 2.5em;
+  height: 2em;
+  line-height: 2em; */
+  border-radius: 6px; 
+  /* background: var(--main);
+  color: var(--second);
+  border-color: var(--main); */
+  -webkit-transition: all .6s ease-out 0s;
+  -moz-transition: all .6s ease-out 0s;
+  -ms-transition: all .6s ease-out 0s;
+  -o-transition: all .6s ease-out 0s;
+  transition: all .6s ease-out 0s;
+}
+
+.social-share .icon-wechat:hover .wechat-qrcode,
+.social-share .icon-wechat:hover .wechat-qrcode h4 {
+  border-radius: var(--border-radius);
+}
+
+/* #post .tag_share .post_share .social-share .icon-facebook:hover {
+  background: #44619D;
+  border-color: #44619D;
+}
+
+#post .tag_share .post_share .social-share .icon-twitter:hover {
+  background: #55acee;
+  border-color: #55acee;
+}
+
+#post .tag_share .post_share .social-share .icon-wechat:hover {
+  background: #7bc549;
+  border-color: #7bc549;
+}
+
+#post .tag_share .post_share .social-share .icon-weibo:hover {
+  background: #ff763b;
+  border-color: #ff763b;
+}
+
+#post .tag_share .post_share .social-share .icon-qq:hover {
+  background: #56b6e7;
+  border-color: #56b6e7;
+} */
+
+#post .tag_share .post-meta__tags:hover {
+  color: var(--second);
+  background: var(--main);
+  border-color: var(--main);
+  -webkit-box-shadow: var(--main-shadow);
+  -moz-box-shadow: var(--main-shadow);
+  -ms-box-shadow: var(--main-shadow);
+  -o-box-shadow: var(--main-shadow);
+  box-shadow: var(--main-shadow);
 }
 
 #footer{
