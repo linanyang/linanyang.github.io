@@ -136,11 +136,11 @@
   
 /* 导航栏常驻 */
 .nav-fixed #nav{
-    transform: translateY(58px)!important;
-    -webkit-transform: translateY(58px)!important;
-    -moz-transform: translateY(58px)!important;
-    -ms-transform: translateY(58px)!important;
-    -o-transform: translateY(58px)!important;
+    transform: translateY(45px)!important;
+    -webkit-transform: translateY(45px)!important;
+    -moz-transform: translateY(45px)!important;
+    -ms-transform: translateY(45px)!important;
+    -o-transform: translateY(45px)!important;
 }
 #nav{
     transition: none!important;
@@ -339,7 +339,7 @@ h6::before {
 }
 
 #nav {
-  height: 70px; /*顶栏高度调整*/
+  height: 58px; /*顶栏高度调整*/
 }
 #page-header.nav-fixed #nav {
   top: -70px; /*顶栏调整空缺补齐*/
@@ -386,73 +386,6 @@ h6::before {
 }
 #aside-content #card-toc .toc-content .toc-link:not(.active) span:hover {
   color: var(--heo-lighttext);
-}
-
-/*外挂标签*/
-p.red,span.red{
- --Color:#e91e64;
- --ColorA:rgba(233,30,100,.2)
-}
-p.green,span.green{
- --Color:#8bc34a;
- --ColorA:rgba(139,195,74,.2)
-}
-p.blue,span.blue{
- --Color:#03a9f4;
- --ColorA:rgba(3,169,244,.2)
-}
-p.yellow,span.yellow{
- --Color:#ffc107;
- --ColorA:rgba(255,193,7,.2)
-}
-p.grey,span.grey{
- --Color:#4c4c4c;
- --ColorA:rgba(76,76,76,.2)
-}
-.font5{
- background:#f6f6f6;
- border-left-color:#767676;
- display:block;
- font-weight:500;
- line-height:32px;
- text-align:left;
- width:100%
-}
-span.inline-tag{
- background-color:var(--Color);
- border-radius:.1rem;
- border-radius:6px;
- color:#fff;
- display:inline;
- font-size:90%;
- font-weight:400;
- line-height:1;
- padding:.2em .6em .3em;
- text-align:center;
- vertical-align:baseline;
- white-space:nowrap
-}
-p.div-border{
- background-color:var(--ColorA,transparent);
- border:1px solid var(--Color,#333);
- border-radius:.4rem;
- padding:10px
-}
-p.left{
- border-left-color:var(--Color);
- border-left-width:5px
-}
-p.bottom{
- border-bottom-color:var(--Color);
- border-bottom-width:5px
-}
-p.right{
- border-right-color:var(--Color);
- border-right-width:5px
-}
-p.top{
- border-top-color:var(--Color);
- border-top-width:5px
 }
 
 /* 标签美化 */
