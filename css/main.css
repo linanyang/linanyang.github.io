@@ -18,13 +18,8 @@ a.blog-slider__title,
 a.category-list-link {
     font-family: 'aqqxs', sans-serif;
 }
-/* 版权字体微调 */
-.post-copyright {
-    font-family: 'aqqxs', sans-serif;
-    font-size: large
-}
 
-/* 背景, 并把主题配置文件中的background设置为 "#efefef" ，否则有可能不会生效 */
+/* 背景, 需要把主题配置文件中的background设置为 "#efefef" ，否则有可能不会生效 */
 #web_bg {
   background: -webkit-linear-gradient(
     0deg,
@@ -90,7 +85,7 @@ a.category-list-link {
   font-weight: 600; /*字体粗细*/
 }
 #nav {
-  height: 58px; /*顶栏高度调整*/
+  height: 70px; /*顶栏高度调整*/
 }
 #page-header.nav-fixed #nav {
   top: -70px; /*顶栏调整空缺补齐*/
