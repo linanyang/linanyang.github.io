@@ -60,75 +60,6 @@
 .ic-table:before{
  content:"\e615"
 }
-.ic-expressions:before{
- content:"\e616"
-}
-.ic-link:before{
- content:"\e617"
-}
-.ic-subColumn:before{
- content:"\e618"
-}
-.ic-attachment:before{
- content:"\e619"
-}
-.ic-h2:before{
- content:"\e61a"
-}
-.ic-h6:before{
- content:"\e61b"
-}
-.ic-italic:before{
- content:"\e61c"
-}
-.ic-title:before{
- content:"\e61d"
-}
-.ic-formula:before{
- content:"\e61f"
-}
-.ic-unorderedList:before{
- content:"\e620"
-}
-.ic-alignLeft:before{
- content:"\e621"
-}
-.ic-alignRight:before{
- content:"\e622"
-}
-.ic-h1:before{
- content:"\e623"
-}
-.ic-h4:before{
- content:"\e624"
-}
-.ic-code:before{
- content:"\e625"
-}
-.ic-help:before{
- content:"\e626"
-}
-.ic-fullScreen:before{
- content:"\e627"
-}
-.ic-search:before{
- content:"\e628"
-}
-.ic-image:before{
- content:"\e629"
-}
-.ic-empty:before{
- content:"\e62a"
-}
-.ic-time:before{
- content:"\e62b"
-}
-.ic-multipleChoiceList:before{
- content:"\e62c"
-}
-.ic-center:before{
- content:"\e62e"
-}
 @font-face{
  font-family:iconfont;
  src:url(//at.alicdn.com/t/font_3402931_k7wduyne5s.woff2?t=1652625245211) format("woff2"),url(//at.alicdn.com/t/font_3402931_k7wduyne5s.woff?t=1652625245211) format("woff"),url(//at.alicdn.com/t/font_3402931_k7wduyne5s.ttf?t=1652625245211) format("truetype")
@@ -310,48 +241,7 @@
  background-color:#49b1f5;
  color:#fff
 }
-#recent-posts>.recent-post-item,.layout>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post{
- background:var(--light_page_color)
-}
-[data-theme=dark] #recent-posts>.recent-post-item,[data-theme=dark] .layout>div:first-child:not(.recent-posts),[data-theme=dark] .layout_post>#page,[data-theme=dark] .layout_post>#post,[data-theme=dark] .read-mode .layout_post>#post{
- background:var(--dark_page_color)
-}
-#page h1.page-title,#post>#post-info{
- text-align:center
-}
-.post #content-inner{
- font-size:1.1em
-}
-.post .post-content h2,.post .post-content h3,.post .post-content h4,.post .post-content h5,.post .post-content h6{
- cursor:pointer
-}
-.post .post-content h2:before,.post .post-content h3:before,.post .post-content h4:before,.post .post-content h5:before,.post .post-content h6:before{
- -webkit-font-smoothing:antialiased;
- -moz-osx-font-smoothing:grayscale;
- color:#49b1f5;
- font-family:i-common!important;
- font-size:.75em;
- margin-right:.3rem;
- transition:color .6s
-}
-.post .post-content h2:hover:before,.post .post-content h3:hover:before,.post .post-content h4:hover:before,.post .post-content h5:hover:before,.post .post-content h6:hover:before{
- color:#eb5055
-}
-.post .post-content h2:before{
- content:"\e61a"
-}
-.post .post-content h3:before{
- content:"\e60b"
-}
-.post .post-content h4:before{
- content:"\e624"
-}
-.post .post-content h5:before{
- content:"\e60d"
-}
-.post .post-content h6:before{
- content:"\e61b"
-}
+
 #article-container .btns a:hover{
  text-decoration:none
 }
@@ -378,8 +268,8 @@ audio{
  width:fit-content
 }
 .aplayer .aplayer-lrc p{
- font-size:12px;
- font-weight:700;
+ font-size:10px;
+ font-weight:600;
  line-height:16px!important
 }
 .aplayer .aplayer-lrc p.aplayer-lrc-current{
@@ -517,7 +407,7 @@ p.grey,span.grey{
 span.inline-tag{
  background-color:var(--Color);
  border-radius:.1rem;
- border-radius:6px;
+ border-radius:4px;
  color:#fff;
  display:inline;
  font-size:90%;
