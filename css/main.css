@@ -61,7 +61,7 @@
 :root {
 	--trans-light: rgba(255, 255, 255, 0.3);
 	--trans-dark: rgba(25, 25, 25, 0.3);
-	--border-style: 1px solid rgb(169, 169, 169);
+	--border-style: 1px solid rgb(169, 169, 169, 0.5);
 	--backdrop-filter: blur(5px) saturate(150%);
   }
   
@@ -86,7 +86,7 @@
 	background: var(--trans-light);
 	border: var(--border-style);
 	border-radius: 12px;
-	--border-style: 2px solid rgb(82, 224, 132);
+	--border-style: 1px solid rgb(169, 169, 169, 0.5);
   }
 
   
@@ -488,9 +488,9 @@ p.top{
 
 /*移动端优化：去除归档、标签、最新文章、公告、、只保留网站统计*/
 @media screen and (max-width: 800px) {
-    #aside_content div:not(:last-child) {
-        display: none;
-        font-size: 13px;
-    }
+  #aside_content div:not(:last-child) {
+    display: none;
+    font-size: 13px;
+  }
 }
 
