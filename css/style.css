@@ -196,7 +196,7 @@
  --dark_bg_color:hsla(0,0%,7%,.8);
  --light_page_color:hsla(0,0%,100%,.5);
  --dark_page_color:hsla(0,0%,7%,.8)
-} */
+} 
 
 .fa-qq{
  color:#10a4ff
@@ -221,7 +221,7 @@
 }
 [data-theme=dark] #aside-content .card-widget{
  background:var(--dark_bg_color)
-}
+} */
 ::-webkit-scrollbar{
  height:4px;
  width:4px
@@ -249,12 +249,12 @@
 #article-container .fancybox img{
  margin:0
 }
-body{
+/* body{
  cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/default.cur),default
 }
 a,button,img{
  cursor:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/img/pointer.cur),default
-}
+} 
 video{
  width:100%
 }
@@ -275,7 +275,7 @@ audio{
 }
 .aplayer .aplayer-lrc p.aplayer-lrc-current{
  color:#49b1f5;
- font-size:15px
+ font-size:10x
 }
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body{
  left:-66px!important
@@ -289,7 +289,7 @@ audio{
 }
 #article-container code,#article-container pre{
  font-family:MyFont!important
-} */
+} 
 #article-container figure.highlight,#article-container pre[class*=language-]{
  background:var(--hl-bg);
  color:var(--hl-color)
@@ -311,7 +311,7 @@ audio{
  background-color:#49b1f5!important;
  background-image:-webkit-linear-gradient(45deg,hsla(0,0%,100%,.4) 25%,transparent 0,transparent 50%,hsla(0,0%,100%,.4) 0,hsla(0,0%,100%,.4) 75%,transparent 0,transparent)!important;
  border-radius:2em!important
-}
+} */
 code[class*=language-],pre[class*=language-]{
  word-wrap:normal;
  background:#fafafa;
@@ -349,7 +349,7 @@ pre[class*=language-]{
 [class*=language-] .namespace{
  opacity:.7
 }
-.token.id,.token.important{
+/* .token.id,.token.important{
  font-weight:700
 }
 .token.atrule,.token.boolean,.token.constant,.token.function,.token.id,.token.important,.token.keyword,.token.symbol{
@@ -375,7 +375,7 @@ pre[class*=language-]{
 }
 .hide-block>.hide-button.open,.hide-inline>.hide-button.open{
  display:block
-}
+} */
 p.red,span.red{
  --Color:#e91e64;
  --ColorA:rgba(233,30,100,.2)
@@ -408,7 +408,7 @@ p.grey,span.grey{
 span.inline-tag{
  background-color:var(--Color);
  border-radius:.1rem;
- border-radius:4px;
+ border-radius:6px;
  color:#fff;
  display:inline;
  font-size:90%;
@@ -517,7 +517,7 @@ p.top{
  text-decoration-color:#999
 }
 #post u{
- border-bottom:1px solid #fe5f58;
+ border-bottom:1.5px solid #fe5f58;
  color:#444;
  text-decoration:none
 }
