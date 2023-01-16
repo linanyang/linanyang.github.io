@@ -59,8 +59,8 @@
 /* 背景透明 */
 /* 文章页背景 */
 :root {
-	--trans-light: rgba(255, 255, 255, 0.88);
-	--trans-dark: rgba(25, 25, 25, 0.88);
+	--trans-light: rgba(255, 255, 255, 0.3);
+	--trans-dark: rgba(25, 25, 25, 0.3);
 	--border-style: 1px solid rgb(169, 169, 169);
 	--backdrop-filter: blur(5px) saturate(150%);
   }
@@ -68,14 +68,14 @@
   /* 首页文章卡片 */
   #recent-posts > .recent-post-item {
 	background: var(--trans-light);
-	border-radius: 25px;
+	border-radius: 10px;
 	border: var(--border-style);
   }
   
   /* 首页侧栏卡片 */
   #aside-content .card-widget {
 	background: var(--trans-light);
-	border-radius: 18px;
+	border-radius: 10px;
 	border: var(--border-style);
   }
   
@@ -85,14 +85,14 @@
   div#archive {
 	background: var(--trans-light);
 	border: var(--border-style);
-	border-radius: 20px;
+	border-radius: 12px;
 	--border-style: 2px solid rgb(82, 224, 132);
   }
 
   
   /* 导航栏 */
   #page-header.nav-fixed #nav {
-	background: rgba(255, 255, 255, 0.88);
+	background: rgba(255, 255, 255, 0.3);
   }
   
   [data-theme="dark"] #page-header.nav-fixed #nav {
