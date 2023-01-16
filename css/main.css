@@ -1,3 +1,29 @@
+/* 字体 */
+@font-face{
+    font-family:'aqqxs' ;  /* 字体名自定义即可 */
+    src:url('https://cdn1.tianli0.top/gh/2x-ercha/cdn-for-try/fonts/FXAiQingQiXiangSuo.ttf'); /* 字体文件路径 */
+    font-display : swap;
+}
+h1,h2,h3,h4,h5,h6,
+a#site-name,span#subtitle,a.site-page,
+a.title,
+#aside-content,
+a.article-sort-item-title,
+a.article-title,
+a.categoryBar-list-link,
+a.blog-slider__title,
+.article-sort-title,
+.tag-cloud-title,
+.category-title,
+a.category-list-link {
+    font-family: 'aqqxs', sans-serif;
+}
+/* 版权字体微调 */
+.post-copyright {
+    font-family: 'aqqxs', sans-serif;
+    font-size: large
+}
+
 /* 背景, 并把主题配置文件中的background设置为 "#efefef" ，否则有可能不会生效 */
 #web_bg {
   background: -webkit-linear-gradient(
@@ -56,6 +82,20 @@
     rgba(109, 186, 130, 0.1) 100%
   );
 }
+
+/*顶栏美化*/
+#nav .site-page {
+  font-size: 0.79em; /*字体大小*/
+  letter-spacing: 3px; /*字体间距*/
+  font-weight: 600; /*字体粗细*/
+}
+#nav {
+  height: 58px; /*顶栏高度调整*/
+}
+#page-header.nav-fixed #nav {
+  top: -70px; /*顶栏调整空缺补齐*/
+}
+
 /* 背景透明 */
 /* 文章页背景 */
 :root {
@@ -136,11 +176,11 @@
   
 /* 导航栏常驻 */
 .nav-fixed #nav{
-    transform: translateY(45px)!important;
-    -webkit-transform: translateY(45px)!important;
-    -moz-transform: translateY(45px)!important;
-    -ms-transform: translateY(45px)!important;
-    -o-transform: translateY(45px)!important;
+    transform: translateY(58px)!important;
+    -webkit-transform: translateY(58px)!important;
+    -moz-transform: translateY(58px)!important;
+    -ms-transform: translateY(58px)!important;
+    -o-transform: translateY(58px)!important;
 }
 #nav{
     transition: none!important;
@@ -331,20 +371,6 @@ h6::before {
 #post-info #post-meta .post-meta-separator {
   margin: 0px 0.4rem;
 }
-/*顶栏美化*/
-#nav .site-page {
-  font-size: 0.79em; /*字体大小*/
-  letter-spacing: 3px; /*字体间距*/
-  font-weight: 600; /*字体粗细*/
-}
-
-#nav {
-  height: 58px; /*顶栏高度调整*/
-}
-#page-header.nav-fixed #nav {
-  top: -70px; /*顶栏调整空缺补齐*/
-}
-
 
 /* 文章目录 */
  #aside-content #card-toc .toc-content {
@@ -418,12 +444,3 @@ h6::before {
 #footer #footer-wrap,#footer #footer-wrap a{
  color:#333
 }
-
-/*移动端优化：去除归档、标签、最新文章、公告、、只保留网站统计*/
-@media screen and (max-width: 800px) {
-  #aside_content div:not(:last-child) {
-    display: none;
-    font-size: 13px;
-  }
-}
-
