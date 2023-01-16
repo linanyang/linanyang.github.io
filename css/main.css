@@ -472,6 +472,20 @@ p.top{
     margin: 5px;
 }
 
+#footer{
+ -webkit-backdrop-filter:saturate(100%) blur(5px);
+ backdrop-filter:saturate(100%) blur(5px);
+ border-top-left-radius:20px;
+ border-top-right-radius:20px;
+ color:#000
+}
+#footer,#footer:before{
+ background:hsla(0,0%,100%,.15)
+}
+#footer #footer-wrap,#footer #footer-wrap a{
+ color:#333
+}
+
 /*移动端优化：去除归档、标签、最新文章、公告、、只保留网站统计*/
 @media screen and (max-width: 800px) {
     #aside_content div:not(:last-child) {
