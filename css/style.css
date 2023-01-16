@@ -1,4 +1,4 @@
-@font-face{
+/* ﻿@font-face{
  font-family:i-common;
  src:url(//at.alicdn.com/t/font_3403049_me0f2kcv8m.woff2?t=1652625899973) format("woff2"),url(//at.alicdn.com/t/font_3403049_me0f2kcv8m.woff?t=1652625899973) format("woff"),url(//at.alicdn.com/t/font_3403049_me0f2kcv8m.ttf?t=1652625899973) format("truetype")
 }
@@ -196,7 +196,8 @@
  --dark_bg_color:hsla(0,0%,7%,.8);
  --light_page_color:hsla(0,0%,100%,.5);
  --dark_page_color:hsla(0,0%,7%,.8)
-}
+} */
+
 .fa-qq{
  color:#10a4ff
 }
@@ -282,13 +283,13 @@ audio{
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
  left:0!important
 }
-@font-face{
+/* @font-face{
  font-family:MyFont;
  src:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/font/woff2/JetBrainsMono-Medium.woff2)
 }
 #article-container code,#article-container pre{
  font-family:MyFont!important
-}
+} */
 #article-container figure.highlight,#article-container pre[class*=language-]{
  background:var(--hl-bg);
  color:var(--hl-color)
@@ -925,7 +926,9 @@ div .btns.grid5>a{
 }
 div.tabs details{
  margin-bottom:.5rem;
- margin-top:.5rem
+ margin-top:.5rem;
+ border: 1px solid;
+ border-radius: 6px;
 }
 details{
  border:1px solid #f6f6f6;
