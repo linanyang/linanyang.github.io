@@ -363,9 +363,13 @@ h6::before {
 }
 /* 文章标题居中 */
 #page-header #post-info #post-meta .meta {
-    text-align: center
+  text-align: center
 } 
-
+@media screen and (max-width: 768px) {
+  #page-header #post-info #post-meta .meta {
+    text-align: center
+  } 
+}
 /* 文章信息 */
 /* #page-header #post-info {
   text-align: left;
@@ -568,7 +572,7 @@ h6::before {
   color: var(--second);
   overflow: hidden;
   border-radius: 10px;
-  background: var(22, 119, 179, 0.3);
+  background: rgba(22, 119, 179, 0.3);
   -webkit-box-shadow: var(--main-shadow) !important;
   -moz-box-shadow: var(--main-shadow) !important;
   -ms-box-shadow: var(--main-shadow) !important;
