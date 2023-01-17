@@ -157,6 +157,18 @@ window.addEventListener('load', () => {
     searchClickFn()
   })
 
+  // 右键搜索
+  document.getElementById('menu-search').addEventListener('click', function () {
+    openSearch()
+    setTimeout(() => {
+      let $input = document.querySelector('#algolia-search .ais-SearchBox-input')
+      let event = document.createEvent("HTMLEvents")
+      event.initEvent("input", false, false)
+      $input.value = rightMenuContext.text
+      $input.dispatchEvent(event)
+    }, 100)
+  })
+
   window.pjax && search.on('render', () => {
     window.pjax.refresh(document.getElementById('algolia-hits'))
   })
