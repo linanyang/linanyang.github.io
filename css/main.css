@@ -362,11 +362,11 @@ h6::before {
   }
 }
 /* 文章标题居中 */
-#page-header #post-info #post-meta .meta {
+#page-header #post-info #post-meta {
   text-align: center
 } 
 @media screen and (max-width: 768px) {
-  #page-header #post-info #post-meta .meta {
+  #page-header #post-info #post-meta {
     text-align: center
   } 
 }
