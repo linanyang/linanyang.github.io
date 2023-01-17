@@ -361,6 +361,10 @@ h6::before {
     z-index: 1;
   }
 }
+/* 文章标题居中 */
+#page h1.page-title,#post>#post-info {
+    text-align: center
+}
 
 /*信息栏底部圆角*/
 #page-header.post-bg:before {
