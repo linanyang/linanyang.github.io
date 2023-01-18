@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.yanhua.cc/posts/2022h2/2022122701.jpg">
 <meta property="article:published_time" content="2022-12-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-18T18:38:51.723Z">
+<meta property="article:modified_time" content="2023-01-18T19:13:47.213Z">
 <meta property="article:author" content="南阳">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img.yanhua.cc/posts/2022h2/2022122701.jpg"><link rel="shortcut icon" href="https://img.yanhua.cc/favicon-003.png"><link rel="canonical" href="https://yanhua.cc/7118bedfce3e.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-01-19 02:38:51'
+  postUpdate: '2023-01-19 03:13:47'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -185,7 +185,7 @@
 </tr>
 </tbody></table>
 <h3 id="刷机过程"><a href="#刷机过程" class="headerlink" title="刷机过程"></a>刷机过程</h3><h4 id="1、刷入调试版固件"><a href="#1、刷入调试版固件" class="headerlink" title="1、刷入调试版固件"></a>1、刷入调试版固件</h4><p>路由器连接电脑进入路由器管理后台，找到高级设置 → 系统升级页面，选择文件<span class="inline-tag green">360POP-P2-V1.0.25.36330.bin</span>等待文件上传完成后自动重启刷入降级固件。<br>降级成功后，再登录路由器管理后台刷入调试版固件。步骤和上面的相同，只不过选择文件时换成<span class="inline-tag green">360POP-P2-DEBUG-V1.0.42.42668.bin</span>。</p>
-<h4 id="2、刷入-breed"><a href="#2、刷入-breed" class="headerlink" title="2、刷入 breed"></a>2、刷入 breed</h4><p>运行 hfs，把 ‘breed-mt7628-hiwifi-hc5661a.bin’ 拖入 hfs 主窗口，得到一个 web 地址： ‘<a target="_blank" rel="noopener" href="http://192.168.0.x:8080/breed-mt7628-hiwifi-hc5661a.bin">http://192.168.0.x:8080/breed-mt7628-hiwifi-hc5661a.bin</a>‘ ，使用 telent 登录 360 路由器，在终端执行下面的命令，注意在执行命令的过程中不要关闭 hfs。使用 telent 登录 360 路由器，在终端执行下面的命令，注意在执行命令的过程中不要关闭 hfs。</p>
+<h4 id="2、刷入-breed"><a href="#2、刷入-breed" class="headerlink" title="2、刷入 breed"></a>2、刷入 breed</h4><p>运行 hfs，把’breed-mt7628-hiwifi-hc5661a.bin’ 拖入 hfs 主窗口，得到一个 web 地址： ‘<a target="_blank" rel="noopener" href="http://192.168.0.x:8080/breed-mt7628-hiwifi-hc5661a.bin">http://192.168.0.x:8080/breed-mt7628-hiwifi-hc5661a.bin</a>‘ ，使用 telent 登录 360 路由器，在终端执行下面的命令，注意在执行命令的过程中不要关闭 hfs。使用 telent 登录 360 路由器，在终端执行下面的命令，注意在执行命令的过程中不要关闭 hfs。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">wget http://192.168.0.X:8080/breed-mt7628-hiwifi-hc5661a.bin</span><br><span class="line">mtd_write erase /dev/mtd1</span><br><span class="line"><span class="built_in">cat</span> breed-mt7628-hiwifi-hc5661a.bin &gt; /dev/mtd1</span><br></pre></td></tr></table></figure>
 
 <p>命令执行完成后，断开电源然后按住 reset 键不要松手，插上电源等待 10s 左右再松手，路由器会重启并自动写入 breed。开机后连接到电脑在浏览器输入 192.168.1.1 即可进入 breed 管理界面。</p>

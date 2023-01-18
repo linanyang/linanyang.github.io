@@ -651,7 +651,7 @@ h6::before {
   width: 2.5em;
   height: 2em;
   line-height: 2em; 
-  border-radius: 6px; 
+  border-radius: 4px; 
   background: var(--main);
   color: var(--second);
   border-color: var(--main); 
@@ -666,7 +666,7 @@ h6::before {
   color: var(--second);
   background: var(--main);
   border-color: var(--main);
-  border-radius: 6px;
+  border-radius: 4px;
   -webkit-box-shadow: var(--main-shadow);
   -moz-box-shadow: var(--main-shadow);
   -ms-box-shadow: var(--main-shadow);
@@ -686,6 +686,7 @@ h6::before {
 .fancybox__carousel.is-draggable .fancybox__slide .fancybox__content {
   cursor: var(--pointer-cursor), pointer !important;
 }
+
 /* 文章段落标题 */
 /* #article-container.post-content .headerlink {
   float: right;
