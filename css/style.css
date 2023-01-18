@@ -408,7 +408,7 @@ p.grey,span.grey{
 span.inline-tag{
  background-color:var(--Color);
  border-radius:.1rem;
- border-radius:6px;
+ border-radius:rpx;
  color:#fff;
  display:inline;
  font-size:90%;
@@ -1057,7 +1057,7 @@ details[open]>div.content>.fancybox:first-child,details[open]>div.content>.highl
 details[open]>div.content>.fancybox:last-child,details[open]>div.content>.highlight:last-child,details[open]>div.content>.snote:last-child,details[open]>div.content>.tabs:last-child,details[open]>div.content>ol:last-child,details[open]>div.content>p:last-child,details[open]>div.content>ul:last-child{
  margin-bottom:0
 }
-div.gallery{
+/* div.gallery{
  margin:.5rem 0;
  overflow:hidden
 }
@@ -1167,4 +1167,4 @@ div.gallery.stretch img,div.gallery.stretch>p img{
  font-size:.7125rem;
  padding-bottom:.4rem;
  padding-top:.4rem
-}
+} */
