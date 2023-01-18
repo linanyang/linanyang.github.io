@@ -3364,7 +3364,8 @@ h1.page-title + .tag-cloud-list {
   -webkit-box-shadow: 0 5px 6px -5px rgba(133,133,133,0.6);
   box-shadow: 0 5px 6px -5px rgba(133,133,133,0.6);
 }
-#page-header.not-top-img #nav a {
+#page-header.not-top-img #nav a,
+#page-header.not-top-img #nav .site-name {
   color: var(--font-color);
   text-shadow: none;
 }
@@ -3380,14 +3381,6 @@ h1.page-title + .tag-cloud-list {
   -o-transition: -o-transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   -ms-transition: -ms-transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-}
-#page-header.nav-fixed #nav.fixed {
-  top: 0;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  transition: all 0.5s;
 }
 #page-header.nav-fixed #nav #blog-info {
   color: var(--font-color);
@@ -3407,7 +3400,15 @@ h1.page-title + .tag-cloud-list {
 #page-header.nav-fixed #nav #toggle-menu:hover {
   color: #49b1f5;
 }
-#page-header.nav-visible #nav:not(.fixed) {
+#page-header.nav-fixed.fixed #nav {
+  top: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  transition: all 0.5s;
+}
+#page-header.nav-visible:not(.fixed) #nav {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -3419,13 +3420,27 @@ h1.page-title + .tag-cloud-list {
   -ms-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
 }
-#page-header.nav-visible + .layout > .aside-content > .sticky_layout {
+#page-header.nav-visible:not(.fixed) + .layout > .aside-content > .sticky_layout {
   top: 70px;
   -webkit-transition: top 0.5s;
   -moz-transition: top 0.5s;
   -o-transition: top 0.5s;
   -ms-transition: top 0.5s;
   transition: top 0.5s;
+}
+#page-header.fixed #nav {
+  position: fixed;
+}
+#page-header.fixed + .layout > .aside-content > .sticky_layout {
+  top: 70px;
+  -webkit-transition: top 0.5s;
+  -moz-transition: top 0.5s;
+  -o-transition: top 0.5s;
+  -ms-transition: top 0.5s;
+  transition: top 0.5s;
+}
+#page-header.fixed + .layout #card-toc .toc-content {
+  max-height: calc(100vh - 170px);
 }
 #page h1.page-title {
   margin: 8px 0 20px;
@@ -3538,9 +3553,6 @@ h1.page-title + .tag-cloud-list {
   opacity: 1;
   -ms-filter: none;
   filter: none;
-}
-#nav.fixed {
-  position: fixed;
 }
 #nav #blog-info {
   -webkit-box-flex: 1;
