@@ -1298,9 +1298,9 @@ strong {
 }
 
 /* 头图黑色遮罩层透明 */
-#page-header::before{
+/* #page-header::before{
   background: transparent!important;
-}
+} */
 
 /* 分类页 */
 #page .category-lists .category-list .category-list-item {
