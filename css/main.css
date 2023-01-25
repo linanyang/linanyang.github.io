@@ -758,7 +758,7 @@ h6::before {
 }
 
 /* 侧边栏个人信息卡片动态渐变色 */
-#aside-content > .card-widget.card-info {
+/* #aside-content > .card-widget.card-info {
   background: linear-gradient(
     -45deg,
     #e8d8b9,
@@ -806,7 +806,7 @@ h6::before {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
 /* 黑夜模式适配 */
 [data-theme="dark"] #aside-content > .card-widget.card-info {
