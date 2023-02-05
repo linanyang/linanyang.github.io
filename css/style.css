@@ -1,4 +1,4 @@
-/* ﻿@font-face{
+@font-face{
  font-family:i-common;
  src:url(//at.alicdn.com/t/font_3403049_me0f2kcv8m.woff2?t=1652625899973) format("woff2"),url(//at.alicdn.com/t/font_3403049_me0f2kcv8m.woff?t=1652625899973) format("woff"),url(//at.alicdn.com/t/font_3403049_me0f2kcv8m.ttf?t=1652625899973) format("truetype")
 }
@@ -221,7 +221,8 @@
 }
 [data-theme=dark] #aside-content .card-widget{
  background:var(--dark_bg_color)
-} */
+} 
+
 ::-webkit-scrollbar{
  height:4px;
  width:4px
@@ -283,7 +284,7 @@ audio{
 .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover{
  left:0!important
 }
-/* @font-face{
+@font-face{
  font-family:MyFont;
  src:url(https://cdn.jsdelivr.net/npm/kang-static/Hexo/font/woff2/JetBrainsMono-Medium.woff2)
 }
@@ -311,7 +312,7 @@ audio{
  background-color:#49b1f5!important;
  background-image:-webkit-linear-gradient(45deg,hsla(0,0%,100%,.4) 25%,transparent 0,transparent 50%,hsla(0,0%,100%,.4) 0,hsla(0,0%,100%,.4) 75%,transparent 0,transparent)!important;
  border-radius:2em!important
-} */
+} 
 code[class*=language-],pre[class*=language-]{
  word-wrap:normal;
  background:#fafafa;
@@ -349,7 +350,7 @@ pre[class*=language-]{
 [class*=language-] .namespace{
  opacity:.7
 }
-/* .token.id,.token.important{
+.token.id,.token.important{
  font-weight:700
 }
 .token.atrule,.token.boolean,.token.constant,.token.function,.token.id,.token.important,.token.keyword,.token.symbol{
@@ -375,7 +376,8 @@ pre[class*=language-]{
 }
 .hide-block>.hide-button.open,.hide-inline>.hide-button.open{
  display:block
-} */
+}
+
 p.red,span.red{
  --Color:#e91e64;
  --ColorA:rgba(233,30,100,.2)
@@ -1057,7 +1059,7 @@ details[open]>div.content>.fancybox:first-child,details[open]>div.content>.highl
 details[open]>div.content>.fancybox:last-child,details[open]>div.content>.highlight:last-child,details[open]>div.content>.snote:last-child,details[open]>div.content>.tabs:last-child,details[open]>div.content>ol:last-child,details[open]>div.content>p:last-child,details[open]>div.content>ul:last-child{
  margin-bottom:0
 }
-/* div.gallery{
+div.gallery{
  margin:.5rem 0;
  overflow:hidden
 }
@@ -1167,4 +1169,4 @@ div.gallery.stretch img,div.gallery.stretch>p img{
  font-size:.7125rem;
  padding-bottom:.4rem;
  padding-top:.4rem
-} */
+} 
