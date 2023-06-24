@@ -3,7 +3,7 @@ var Countdown = () => {
     clearTimeout(CountdownTimer);
     if (!document.querySelector('#Countdown')) return;
     // 截至时间戳 and 星期对象
-    let Countdown = new Date('2023-06-24 22:00:00').getTime() / 1000,
+    let Countdown = new Date('2024-06-07 09:00:00').getTime() / 1000,
         week = { 0: '周日', 1: '周一', 2: '周二', 3: '周三', 4: '周四', 5: '周五', 6: '周六' }
 
     time();
@@ -31,8 +31,8 @@ var Countdown = () => {
 
             // 大于一天倒计时
             if (second > 86400) {
-                let d = nol(parseInt(second / 86000));
-                second %= 86000
+                let d = nol(parseInt(second / 86400));
+                second %= 86400
                 let h = nol(parseInt(second / 3600));
                 second %= 3600;
                 let m = nol(parseInt(second / 60));
