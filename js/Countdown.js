@@ -27,7 +27,7 @@ var Countdown = () => {
             document.querySelector('#Countdown .Countdown-time').innerHTML = '<span class="happyCountdown">金榜题名</p>';
         } else {
             // 大于0则还未到截止时间
-            document.querySelector('#Countdown .title').innerHTML = '距离2024年高考：'
+            document.querySelector('#Countdown .title').innerHTML = '距离2024年高考还有：'
 
             // 大于一天倒计时
             if (second > 86400) {
