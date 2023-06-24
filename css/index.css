@@ -231,7 +231,6 @@ template {
   height: 16px;
 }
 .anzhiyufont,
-hr:before,
 #article-container a.headerlink::before,
 #post .post-outdate-notice:before,
 .note:not(.no-icon)::before {
@@ -1988,25 +1987,6 @@ hr {
   position: relative;
   margin: 40px auto;
   border: 2px dashed var(--hr-border);
-  width: calc(100% - 4px);
-}
-hr:hover:before {
-  left: calc(95% - 20px);
-}
-hr:before {
-  position: absolute;
-  top: -10px;
-  left: 5%;
-  z-index: 1;
-  color: var(--hr-before-color);
-  content: '\f0c4';
-  font-size: 16px;
-  line-height: 1;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
 }
 .table-wrap {
   overflow-x: scroll;
@@ -2019,6 +1999,9 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
   empty-cells: show;
+}
+table tr:nth-child(even) {
+  background-color: var(--anzhiyu-secondbg);
 }
 table thead {
   background: var(--anzhiyu-secondbg);
