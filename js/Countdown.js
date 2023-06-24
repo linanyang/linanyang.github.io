@@ -13,10 +13,10 @@ var Countdown = () => {
 
     function time() {
         // 现在 时间对象
-        let now = new Date();
+        let now = new Date(+8);
 
         // 右下角 今天
-        document.querySelector('#Countdown .today').innerHTML = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate(+8) + ' ' + week[now.getDay()]
+        document.querySelector('#Countdown .today').innerHTML = now.getFullYear(+8) + '-' + (now.getMonth(+8) + 1) + '-' + now.getDate(+8) + ' ' + week[now.getDay(+8)]
 
         // 现在与截至时间相差秒数
         let second = Countdown - Math.round(now.getTime(+8) / 1000);
