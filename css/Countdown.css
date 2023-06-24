@@ -23,7 +23,7 @@
     padding: 1rem;
     position: relative;
     border-radius: 12px;
-    background-image: /img/gaokao.jpg;
+    background-image: url(/img/gaokao.jpg);
     background-size: cover;
     background-position: center;
 }
