@@ -38,7 +38,7 @@ var Countdown = () => {
                 let m = nol(parseInt(second / 60));
                 second %= 60;
                 let s = nol(second);
-                document.querySelector('#Countdown .Countdown-time').innerHTML = `<span class="time">${d}天${h}时${m}分${s}秒</span></spa0on>`;
+                document.querySelector('#Countdown .Countdown-time').innerHTML = `<span class="time">${d}天${h}时<br>${m}分${s}秒</span></spa0on>`;
                 // 计时
                 CountdownTimer = setTimeout(time, 1000);
             }
