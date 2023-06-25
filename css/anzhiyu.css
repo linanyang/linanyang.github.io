@@ -1,0 +1,6 @@
+:root {
+	--zhuti-main: #fff
+}
+body {
+	background-color: var(--zhuti-main)
+}
