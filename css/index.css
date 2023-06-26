@@ -18957,7 +18957,8 @@ div#bannerGroup {
   flex-direction: column;
   width: 100%;
   height: 76%;
-  background: var(--anzhiyu-card-bg);
+  /* background: var(--anzhiyu-card-bg); */
+  background: url(/img/firework.webp);
   background-size: cover;
   margin-bottom: 0.5rem;
   border: var(--style-border);
