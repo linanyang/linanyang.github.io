@@ -15531,7 +15531,7 @@ body[data-type="album"] #page {
   border: 0;
   box-shadow: none !important;
   padding: 0 !important;
-  background: 0 0 !important;
+  background: var(--anzhiyu-background);
 }
 body[data-type="album"] #page .page-title {
   display: none;
