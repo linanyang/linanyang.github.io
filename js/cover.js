@@ -1,103 +1,45 @@
 // 封面纯色
-function 
-coverColor
-() {
-    var path = document.
-getElementById
-("post-cover")?.src;
+function coverColor() {
+    var path = document.getElementById("post-cover")?.src;
     if (path !== undefined) {
-        
-RGBaster
-.
-colors
-(path, {
+        RGBaster.colors(path, {
             paletteSize: 30,
             exclude: ["rgb(255,255,255)", "rgb(0,0,0)", "rgb(254,254,254)"],
             success: function (t) {
                 if (t.dominant != 'rgb(66,90,239)') {
-                    const c = t.dominant.
-match
-(/\d+/g);
+                    const c = t.dominant.match(/\d+/g);
                     var value = `rgb(${c[0]},${c[1]},${c[2]})`;
-                    if (
-getContrastYIQ
-(
-colorHex
-(value)) == "light") {
-                        value = 
-LightenDarkenColor
-(
-colorHex
-(value), -40)
+                    if (getContrastYIQ(colorHex(value)) == "light") {
+                        value = LightenDarkenColor(colorHex(value), -40)
                     }
-                    document.styleSheets[0].
-addRule
-(':root', '--zhuti-main:' + value + '!important');
-                    document.styleSheets[0].
-addRule
-(':root', '--zhuti-main-op:' + value + '23!important');
-                    document.styleSheets[0].
-addRule
-(':root', '--zhuti-main-op-deep:' + value + 'dd!important');
-                    document.styleSheets[0].
-addRule
-(':root', '--zhuti-main-none:' + value + '00!important');
-                    
-Jay
-.
-initThemeColor
-()
-                    document.
-getElementById
-("coverdiv").classList.
-add
-("loaded");
+                    document.styleSheets[0].addRule(':root', '--zhuti-main:' + value + '!important');
+                    document.styleSheets[0].addRule(':root', '--zhuti-main-op:' + value + '23!important');
+                    document.styleSheets[0].addRule(':root', '--zhuti-main-op-deep:' + value + 'dd!important');
+                    document.styleSheets[0].addRule(':root', '--zhuti-main-none:' + value + '00!important');
+                    Jay.initThemeColor()
+                    document.getElementById("coverdiv").classList.add("loaded");
                 }
             }
         });
 
     } else {
-        document.styleSheets[0].
-addRule
-(':root', '--zhuti-main: var(--zhuti-theme)!important');
-        document.styleSheets[0].
-addRule
-(':root', '--zhuti-main-op: var(--zhuti-theme-op)!important');
-        document.styleSheets[0].
-addRule
-(':root', '--zhuti-main-op-deep:var(--zhuti-theme-op-deep)!important');
-        document.styleSheets[0].
-addRule
-(':root', '--zhuti-main-none: var(--zhuti-theme-none)!important');
-        
-Jay
-.
-initThemeColor
-()
+        document.styleSheets[0].addRule(':root', '--zhuti-main: var(--zhuti-theme)!important');
+        document.styleSheets[0].addRule(':root', '--zhuti-main-op: var(--zhuti-theme-op)!important');
+        document.styleSheets[0].addRule(':root', '--zhuti-main-op-deep:var(--zhuti-theme-op-deep)!important');
+        document.styleSheets[0].addRule(':root', '--zhuti-main-none: var(--zhuti-theme-none)!important');
+        Jay.initThemeColor()
     }
 }
 
 // RGB颜色转化为16进制颜色
-function 
-colorHex
-(str) {
+function colorHex(str) {
     var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
     var that = str;
-    if (/^(rgb|RGB)/.
-test
-(that)) {
-        var aColor = that.
-replace
-(/(?:\(|\)|rgb|RGB)*/g, "").
-split
-(",");
+    if (/^(rgb|RGB)/.test(that)) {
+        var aColor = that.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
         var strHex = "#";
         for (var i = 0; i < aColor.length; i++) {
-            var hex = 
-Number
-(aColor[i]).
-toString
-(16);
+            var hex = Number(aColor[i]).toString(16);
             if (hex === "0") {
                 hex += hex;
             }
@@ -107,14 +49,8 @@ toString
             strHex = that;
         }
         return strHex;
-    } else if (reg.
-test
-(that)) {
-        var aNum = that.
-replace
-(/#/, "").
-split
-("");
+    } else if (reg.test(that)) {
+        var aNum = that.replace(/#/, "").split("");
         if (aNum.length === 6) {
             return that;
         } else if (aNum.length === 3) {
@@ -130,56 +66,34 @@ split
 }
 
 // 16进制颜色转化为RGB颜色
-function 
-colorRgb
-(str) {
+function colorRgb(str) {
     var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
-    var sColor = str.
-toLowerCase
-();
-    if (sColor && reg.
-test
-(sColor)) {
+    var sColor = str.toLowerCase();
+    if (sColor && reg.test(sColor)) {
         if (sColor.length === 4) {
             var sColorNew = "#";
             for (var i = 1; i < 4; i += 1) {
-                sColorNew += sColor.
-slice
-(i, i + 1).
-concat
-(sColor.
-slice
-(i, i + 1));
+                sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
             }
             sColor = sColorNew;
         }
         // 处理六位的颜色值
         var sColorChange = [];
         for (var i = 1; i < 7; i += 2) {
-            sColorChange.
-push
-(parseInt("0x" + sColor.
-slice
-(i, i + 2)));
+            sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
         }
-        return "rgb(" + sColorChange.
-join
-(",") + ")";
+        return "rgb(" + sColorChange.join(",") + ")";
     } else {
         return sColor;
     }
 }
 
 // 变暗变亮主方法
-function 
-LightenDarkenColor
-(col, amt) {
+function LightenDarkenColor(col, amt) {
     var usePound = false;
 
     if (col[0] == "#") {
-        col = col.
-slice
-(1);
+        col = col.slice(1);
         usePound = true;
     }
 
@@ -201,25 +115,13 @@ slice
     else if (g < 0) g = 0;
 
 
-    return (usePound ? "#" : "") + 
-String
-("000000" + (g | (b << 8) | (r << 16)).
-toString
-(16)).
-slice
-(-6);
+    return (usePound ? "#" : "") + String("000000" + (g | (b << 8) | (r << 16)).toString(16)).slice(-6);
 }
 
 // 判断是否为亮色
-function 
-getContrastYIQ
-(hexcolor) {
-    var colorrgb = 
-colorRgb
-(hexcolor);
-    var colors = colorrgb.
-match
-(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+function getContrastYIQ(hexcolor) {
+    var colorrgb = colorRgb(hexcolor);
+    var colors = colorrgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     var red = colors[1];
     var green = colors[2];
     var blue = colors[3];
@@ -232,5 +134,4 @@ match
         return "dark";
     }
 }
-coverColor
-()
+coverColor()
