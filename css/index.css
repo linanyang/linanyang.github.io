@@ -13591,7 +13591,7 @@ li.card-archive-list-item {
   transform: rotate(360deg);
 }
 #vcomment textarea {
-  background: url("/img/comments.gif") 100% 100% no-repeat;
+  background: url("https://img.yanhua.cc/themes/comments.gif") 100% 100% no-repeat;
 }
 #vcomment textarea:focus {
   background-image: none;
