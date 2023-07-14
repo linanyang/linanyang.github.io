@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img.yanhua.cc/posts/2020/2020071501.jpg">
 <meta property="article:published_time" content="2020-07-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-07-14T01:40:10.726Z">
+<meta property="article:modified_time" content="2023-07-14T01:48:59.173Z">
 <meta property="article:author" content="南阳">
 <meta property="article:tag" content="vim">
 <meta property="article:tag" content="linux">
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-07-14 09:40:10'
+  postUpdate: '2023-07-14 09:48:59'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -185,11 +185,11 @@
 
 <details class="folding-tag" cyan open><summary> 配置文件说明： </summary>
               <div class='content'>
-              <p><span class='p blue'>system vimrc file：</span>系统的配置文件，系统管理员可以为每个用户的 vim 配置使用这个 vimrc 文件。<br><span class='p blue'>user vimrc file：</span>用户自定义的配置文件。<br><span class='p blue'>2nd user vimrc file：</span>引入了一个新的目录~&#x2F;.vim&#x2F;，用户可以将 vim 的所有文件（插件和配置文件等）都放在此目录下，以后如果需要将 vim 的配置拷贝到另一个系统的话，拷贝~&#x2F;.vim&#x2F;目录就可以了，比较方便。<br><span class='p blue'>user exrc file：</span> vi 的配置文件。<br><span class='p blue'>defaults file：</span> vim 默认的配置文件，当以上的 vim 配置文件都找不到时，vim 就会使用这个文件作为配置文件。</p>
+              <p><code>system vimrc file:</code>系统的配置文件，系统管理员可以为每个用户的 vim 配置使用这个 vimrc 文件。<br><span class='p blue'>user vimrc file：</span>用户自定义的配置文件。<br><span class='p blue'>2nd user vimrc file：</span>引入了一个新的目录~&#x2F;.vim&#x2F;，用户可以将 vim 的所有文件（插件和配置文件等）都放在此目录下，以后如果需要将 vim 的配置拷贝到另一个系统的话，拷贝~&#x2F;.vim&#x2F;目录就可以了，比较方便。<br><span class='p blue'>user exrc file：</span> vi 的配置文件。<br><span class='p blue'>defaults file：</span> vim 默认的配置文件，当以上的 vim 配置文件都找不到时，vim 就会使用这个文件作为配置文件。</p>
               </div>
             </details>
 
-<h3 id="vim-鼠标右键无法粘贴"><a href="#vim-鼠标右键无法粘贴" class="headerlink" title="vim 鼠标右键无法粘贴"></a>vim 鼠标右键无法粘贴</h3><p>vim 使用右键变成<span class='p green'>(insert) VISUAL</span>的状态，没法粘贴。<br>解决办法：在配置文件中将 ‘set mouse&#x3D;a’修改为 <code>set mouse=r</code> ，重启 vim 即可。</p>
+<h3 id="vim-鼠标右键无法粘贴"><a href="#vim-鼠标右键无法粘贴" class="headerlink" title="vim 鼠标右键无法粘贴"></a>vim 鼠标右键无法粘贴</h3><p>vim 使用右键变成 <code>(insert) VISUA</code>的状态，没法粘贴。<br>解决办法：在配置文件中将 <code>set mouse=a</code> 修改为 <code>set mouse=r</code> ，重启 vim 即可。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if has(&#x27;mouse&#x27;)</span><br><span class="line">  if &amp;term =~ &#x27;xterm&#x27;</span><br><span class="line"> - set mouse=a</span><br><span class="line"> + set mouse=r</span><br><span class="line">  else</span><br><span class="line">    set mouse=nvi</span><br><span class="line">  endif</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
 
 <h3 id="vim-粘贴时自动缩进"><a href="#vim-粘贴时自动缩进" class="headerlink" title="vim 粘贴时自动缩进"></a>vim 粘贴时自动缩进</h3><p>默认情况下 vim 粘贴时会自动缩进，导致代码完全变形。<br>解决办法：</p>
