@@ -4,3 +4,9 @@
 body {
 	background-color: var(--zhuti-main)
 }
+
+@font-face {
+  font-family: 'FiraCode';
+  font-display: swap;
+  src: url('/fonts/FiraCode.woff2') format("truetype");  
+}
