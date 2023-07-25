@@ -1,6 +1,6 @@
 // 封面纯色
 function coverColor() {
-    var path = document.getElementById("post-cover")?.src;
+    var path = document.getElementById("post-top-bg")?.src;
     if (path !== undefined) {
         RGBaster.colors(path, {
             paletteSize: 30,
@@ -12,9 +12,9 @@ function coverColor() {
                     if (getContrastYIQ(colorHex(value)) == "light") {
                         value = LightenDarkenColor(colorHex(value), -40)
                     }
-                    document.styleSheets[0].addRule(':root', '--zhuti-main:' + value + '!important');
-                    document.styleSheets[0].addRule(':root', '--zhuti-main-op:' + value + '23!important');
-                    document.styleSheets[0].addRule(':root', '--zhuti-main-op-deep:' + value + 'dd!important');
+                    document.styleSheets[0].addRule(':root', '--anzhiyu-theme:' + value + '!important');
+                    document.styleSheets[0].addRule(':root', '--anzhiyu-theme-op:' + value + '23!important');
+                    document.styleSheets[0].addRule(':root', '--anzhiyu-theme-op-deep:' + value + 'dd!important');
                     document.styleSheets[0].addRule(':root', '--zhuti-main-none:' + value + '00!important');
                     Jay.initThemeColor()
                     document.getElementById("coverdiv").classList.add("loaded");
@@ -23,9 +23,9 @@ function coverColor() {
         });
 
     } else {
-        document.styleSheets[0].addRule(':root', '--zhuti-main: var(--zhuti-theme)!important');
-        document.styleSheets[0].addRule(':root', '--zhuti-main-op: var(--zhuti-theme-op)!important');
-        document.styleSheets[0].addRule(':root', '--zhuti-main-op-deep:var(--zhuti-theme-op-deep)!important');
+        document.styleSheets[0].addRule(':root', '--zhuti-main: var(--anzhiyu-theme)!important');
+        document.styleSheets[0].addRule(':root', '--zhuti-main-op: var(--anzhiyu-theme-op)!important');
+        document.styleSheets[0].addRule(':root', '--zhuti-main-op-deep:var(--anzhiyu-theme-op-deep)!important');
         document.styleSheets[0].addRule(':root', '--zhuti-main-none: var(--zhuti-theme-none)!important');
         Jay.initThemeColor()
     }
