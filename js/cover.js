@@ -1,6 +1,6 @@
 // 封面纯色
 function coverColor() {
-    var path = document.getElementById("post-top-bg")?.src;
+    var path = document.getElementById("post-cover")?.src;
     if (path !== undefined) {
         RGBaster.colors(path, {
             paletteSize: 30,
@@ -23,9 +23,9 @@ function coverColor() {
         });
 
     } else {
-        document.styleSheets[0].addRule(':root', '--zhuti-main: var(--anzhiyu-theme)!important');
-        document.styleSheets[0].addRule(':root', '--zhuti-main-op: var(--anzhiyu-theme-op)!important');
-        document.styleSheets[0].addRule(':root', '--zhuti-main-op-deep:var(--anzhiyu-theme-op-deep)!important');
+        document.styleSheets[0].addRule(':root', '--anzhiyu-main: var(--anzhiyu-theme)!important');
+        document.styleSheets[0].addRule(':root', '--anzhiyu-main-op: var(--anzhiyu-theme-op)!important');
+        document.styleSheets[0].addRule(':root', '--anzhiyu-op-deep:var(--anzhiyu-theme-op-deep)!important');
         document.styleSheets[0].addRule(':root', '--zhuti-main-none: var(--zhuti-theme-none)!important');
         Jay.initThemeColor()
     }
