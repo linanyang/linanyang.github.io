@@ -3,7 +3,7 @@ function coverColor() {
     var path = document.getElementById("post-top-bg")?.src;
     if (path !== undefined) {
         RGBaster.colors(path, {
-            paletteSize: 10,
+            paletteSize: 5,
             exclude: ["rgb(255,255,255)", "rgb(0,0,0)", "rgb(254,254,254)"],
             success: function (t) {
                 if (t.dominant != 'rgb(66,90,239)') {
