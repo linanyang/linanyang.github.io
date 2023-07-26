@@ -1,6 +1,6 @@
 // 封面纯色
 function coverColor() {
-    var path = document.getElementById("post-cover")?.src;
+    var path = document.getElementById("post-top-bg")?.src;
     if (path !== undefined) {
         RGBaster.colors(path, {
             paletteSize: 30,
