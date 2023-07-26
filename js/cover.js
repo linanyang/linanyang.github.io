@@ -3,7 +3,7 @@ function coverColor() {
     var path = document.getElementById("post-top-bg")?.src;
     if (path !== undefined) {
         RGBaster.colors(path, {
-            paletteSize: 30,
+            paletteSize: 10,
             exclude: ["rgb(255,255,255)", "rgb(0,0,0)", "rgb(254,254,254)"],
             success: function (t) {
                 if (t.dominant != 'rgb(66,90,239)') {
@@ -15,7 +15,7 @@ function coverColor() {
                     document.styleSheets[0].addRule(':root', '--anzhiyu-theme:' + value + '!important');
                     document.styleSheets[0].addRule(':root', '--anzhiyu-theme-op:' + value + '23!important');
                     document.styleSheets[0].addRule(':root', '--anzhiyu-theme-op-deep:' + value + 'dd!important');
-                    document.styleSheets[0].addRule(':root', '--zhuti-main-none:' + value + '00!important');
+                    document.styleSheets[0].addRule(':root', '--anzhiyu-theme-none:' + value + '00!important');
                     anzhiyu.initThemeColor()
                     document.getElementById("coverdiv").classList.add("loaded");
                 }
@@ -26,7 +26,7 @@ function coverColor() {
         document.styleSheets[0].addRule(':root', '--anzhiyu-main: var(--anzhiyu-theme)!important');
         document.styleSheets[0].addRule(':root', '--anzhiyu-main-op: var(--anzhiyu-theme-op)!important');
         document.styleSheets[0].addRule(':root', '--anzhiyu-op-deep:var(--anzhiyu-theme-op-deep)!important');
-        document.styleSheets[0].addRule(':root', '--zhuti-main-none: var(--zhuti-theme-none)!important');
+        document.styleSheets[0].addRule(':root', '--anzhiyu-main-none: var(--anzhiyu-theme-none)!important');
         anzhiyu.initThemeColor()
     }
 }
