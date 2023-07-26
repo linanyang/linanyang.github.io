@@ -16,7 +16,7 @@ function coverColor() {
                     document.styleSheets[0].addRule(':root', '--anzhiyu-theme-op:' + value + '23!important');
                     document.styleSheets[0].addRule(':root', '--anzhiyu-theme-op-deep:' + value + 'dd!important');
                     document.styleSheets[0].addRule(':root', '--zhuti-main-none:' + value + '00!important');
-                    Jay.initThemeColor()
+                    anzhiyu.initThemeColor()
                     document.getElementById("coverdiv").classList.add("loaded");
                 }
             }
@@ -27,7 +27,7 @@ function coverColor() {
         document.styleSheets[0].addRule(':root', '--anzhiyu-main-op: var(--anzhiyu-theme-op)!important');
         document.styleSheets[0].addRule(':root', '--anzhiyu-op-deep:var(--anzhiyu-theme-op-deep)!important');
         document.styleSheets[0].addRule(':root', '--zhuti-main-none: var(--zhuti-theme-none)!important');
-        Jay.initThemeColor()
+        anzhiyu.initThemeColor()
     }
 }
 
