@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>我的可达鸭</title>
+  <title>可达鸭</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <link type="text/css" rel="stylesheet" href="main.css">
@@ -81,7 +81,7 @@
     <script type="importmap">
 			{
 				"imports": {
-					"three": "/psyduck/three.module.js"
+					"three": "./three.module.js"
 				}
 			}
 		</script>
@@ -90,7 +90,7 @@
 
       import * as THREE from 'three';
 
-      import Stats from '/psyduck/stats.module.js';
+      import Stats from './stats.module.js';
 
       import { OrbitControls } from '/psyduck/OrbitControls.js';
       import { RoomEnvironment } from '/psyduck/RoomEnvironment.js';
@@ -167,7 +167,7 @@
       const loader = new GLTFLoader(manager);
       loader.setDRACOLoader(dracoLoader);
 
-      loader.load('psyduck.glb', function (gltf) {
+      loader.load('/psyduck/psyduck.glb', function (gltf) {
 
 
         document.getElementById('slider').style.display='none';
@@ -257,7 +257,7 @@
         ctx.scale(-1, 1);
         ctx.fillText(txt, 0, 0);
         //生成图片
-        let url = canvas.toDataURL('image/png');
+        let url = canvas.toDataURL('/image/png');
         return url
       }
 
@@ -292,11 +292,11 @@
         //设置文字
         ctx.fillStyle = "white";
         ctx.font = 'normal 30px "楷体"'
-        ctx.fillText('yanhua.cc', 0, 70)
-        ctx.fillText('烟花', 50, 170)
+        ctx.fillText('112资源网 112zyw.cn', 0, 70)
+        ctx.fillText('112资源网', 50, 170)
         ctx.fillText('制作不易~给个关注喔！！！', 0, 270)
         //生成图片
-        let url = canvas.toDataURL('image/png');
+        let url = canvas.toDataURL('/image/png');
         //将图片构建到纹理中
         let geometry1 = new THREE.PlaneGeometry(15, 15)
         let material1 = new THREE.MeshBasicMaterial({
@@ -365,4 +365,3 @@
 </body>
 
 </html>
-
