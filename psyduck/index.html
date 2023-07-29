@@ -29,10 +29,10 @@
     bottom: -16px;
 ">
       /* btn__secondary */
-      <div class="btn btn btn__primary" onClick="playPause();" style="position: absolute;bottom: 48px;left: 28px;">
+      <div class="btn btn btn__primary" onClick="playPause();" style="position: absolute;bottom: 48px;left: 50px;">
         <p>开启BGM</p>
       </div>
-      <div class="btn btn__primary" onClick="share();" style="position: absolute;bottom: 48px;left: 220px;">
+      <div class="btn btn__primary" onClick="share();" style="position: absolute;bottom: 48px;left: 200px;">
         <p>替换文字</p>
       </div>
 
@@ -180,20 +180,20 @@
             if (gl.type === 'Mesh') {
               switch (gl.name) {
                 case "网格015":
-                  // txt = "德";
-                  txt = "txt3";
+                  // txt = "好好";
+                  txt = "txt1";
                   break;
                 case "网格015_1":
-                  // txt = "诺克萨斯";
-                  txt = 'txt1'
+                  // txt = "天天";
+                  txt = 'txt3'
                   break;
                 case "网格017":
-                  // txt = "帅气";
-                  txt = "txt2";
+                  // txt = "向上";
+                  txt = "txt4";
                   break;
                 case "网格017_1":
-                  // txt = "好可爱";
-                  txt = "txt4";
+                  // txt = "学习";
+                  txt = "txt2";
                   break;
                 default: return;
               }
@@ -292,10 +292,9 @@
         ctx.fillRect(0, 0, 300, 300)
         //设置文字
         ctx.fillStyle = "white";
-        ctx.font = 'normal 30px "楷体"'
-        ctx.fillText('112资源网 112zyw.cn', 0, 70)
-        ctx.fillText('112资源网', 50, 170)
-        ctx.fillText('制作不易~给个关注喔！！！', 0, 270)
+        ctx.font = 'normal 40px "楷体"'
+        ctx.fillText('烟花', 120, 100)
+        ctx.fillText('yanhua.cc', 100, 200)
         //生成图片
         let url = canvas.toDataURL('/image/png');
         //将图片构建到纹理中
