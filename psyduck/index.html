@@ -28,10 +28,11 @@
     position: fixed;
     bottom: -16px;
 ">
-      <div class="btn btn btn__secondary" onClick="playPause();" style="position: absolute;bottom: 48px;left: 28px;">
+      /* btn__secondary */
+      <div class="btn btn btn__primary" onClick="playPause();" style="position: absolute;bottom: 48px;left: 28px;">
         <p>开启BGM</p>
       </div>
-      <div class="btn btn__primary" onClick="share();" style="position: absolute;bottom: 48px;left: 244px;">
+      <div class="btn btn__primary" onClick="share();" style="position: absolute;bottom: 48px;left: 220px;">
         <p>替换文字</p>
       </div>
 
@@ -43,9 +44,9 @@
 
     <div style="position:fixed;width: 0;display: none;" id="form">
       <input type="text" class="form__input" id="txt1" placeholder="快乐">
-      <input type="text" class="form__input" id="txt2" placeholder="变美">
-      <input type="text" class="form__input" id="txt3" placeholder="暴富">
-      <input type="text" class="form__input" id="txt4" placeholder="六一">
+      <input type="text" class="form__input" id="txt2" placeholder="六一">
+      <input type="text" class="form__input" id="txt3" placeholder="变美">
+      <input type="text" class="form__input" id="txt4" placeholder="暴富">
       <div class="btn btn__primary" onClick="create();">
         <p> 生成</p>
       </div>
@@ -180,7 +181,7 @@
               switch (gl.name) {
                 case "网格015":
                   // txt = "德";
-                  txt = "txt2";
+                  txt = "txt3";
                   break;
                 case "网格015_1":
                   // txt = "诺克萨斯";
@@ -188,11 +189,11 @@
                   break;
                 case "网格017":
                   // txt = "帅气";
-                  txt = "txt4";
+                  txt = "txt2";
                   break;
                 case "网格017_1":
                   // txt = "好可爱";
-                  txt = "txt3";
+                  txt = "txt4";
                   break;
                 default: return;
               }

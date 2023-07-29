@@ -189,7 +189,7 @@
   
   /*  BUTTONS  */
   .btn {
-	width: 15rem;
+	width: 12rem;
 	height: 4rem;
 	border-radius: 1rem;
 	box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
@@ -443,7 +443,7 @@
 	grid-row: 3/4;
   }
   .form__input {
-	width: 13.4rem;
+	width: 12rem;
     height: 4rem;
     border: none;
     border-radius: 1rem;
