@@ -584,11 +584,11 @@ const anzhiyu = {
   },
   sayhi: function () {
     const $sayhiEl = document.getElementById("author-info__sayhi");
-  
+
     const getTimeState = () => {
       const hour = new Date().getHours();
       let message = "";
-  
+
       if (hour >= 0 && hour <= 5) {
         message = "睡个好觉，保证精力充沛";
       } else if (hour > 5 && hour <= 10) {
@@ -600,15 +600,15 @@ const anzhiyu = {
       } else if (hour > 18 && hour <= 24) {
         message = "不要太劳累了，早睡更健康";
       }
-  
+
       return message;
     };
-  
+
     if ($sayhiEl) {
       $sayhiEl.innerHTML = getTimeState();
     }
   },
-  
+
   // 友链注入预设评论
   addFriendLink() {
     var input = document.getElementsByClassName("el-textarea__inner")[0];
@@ -1101,7 +1101,7 @@ const anzhiyu = {
       "取消"
     );
     travellingsTimer = setTimeout(function () {
-      window.open("https://www.travellings.cn/go.html");
+      window.open("https://www.travellings.cn/go.html", "_blank");
     }, "5000");
   },
 
@@ -1309,7 +1309,6 @@ const anzhiyu = {
   },
   // 切换作者卡片状态文字
   changeSayHelloText: function () {
-    console.info(GLOBAL_CONFIG);
     const greetings = GLOBAL_CONFIG.authorStatus.skills;
 
     const authorInfoSayHiElement = document.getElementById("author-info__sayhi");
@@ -1321,5 +1320,101 @@ const anzhiyu = {
       randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
     }
     authorInfoSayHiElement.textContent = randomGreeting;
+  },
+};
+
+const anzhiyuPopupManager = {
+  queue: [],
+  processing: false,
+  Jump: false,
+
+  enqueuePopup(title, tip, url, duration = 3000) {
+    this.queue.push({ title, tip, url, duration });
+    if (!this.processing) {
+      this.processQueue();
+    }
+  },
+
+  processQueue() {
+    if (this.queue.length > 0 && !this.processing) {
+      this.processing = true;
+      const { title, tip, url, duration } = this.queue.shift();
+      this.popupShow(title, tip, url, duration);
+    }
+  },
+
+  popupShow(title, tip, url, duration) {
+    const popupWindow = document.getElementById("popup-window");
+    const windowTitle = popupWindow.querySelector(".popup-window-title");
+    const windowContent = popupWindow.querySelector(".popup-window-content");
+    const cookiesTip = windowContent.querySelector(".popup-tip");
+    if (popupWindow.classList.contains("show-popup-window")) {
+      popupWindow.classList.add("popup-hide");
+    }
+
+    // 等待上一个弹窗完全消失
+    setTimeout(() => {
+      // 移除之前的点击事件处理程序
+      popupWindow.removeEventListener("click", this.clickEventHandler);
+      if (url) {
+        if (window.pjax) {
+          this.clickEventHandler = event => {
+            event.preventDefault();
+            pjax.loadUrl(url);
+            popupWindow.classList.remove("show-popup-window");
+            popupWindow.classList.remove("popup-hide");
+            this.Jump = true;
+
+            // 处理队列中的下一个弹出窗口
+            this.processing = false;
+            this.processQueue();
+          };
+
+          popupWindow.addEventListener("click", this.clickEventHandler);
+        } else {
+          this.clickEventHandler = () => {
+            window.location.href = url;
+          };
+          popupWindow.addEventListener("click", this.clickEventHandler);
+        }
+        if (popupWindow.classList.contains("no-url")) {
+          popupWindow.classList.remove("no-url");
+        }
+      } else {
+        if (!popupWindow.classList.contains("no-url")) {
+          popupWindow.classList.add("no-url");
+        }
+
+        this.clickEventHandler = () => {
+          popupWindow.classList.add("popup-hide");
+          setTimeout(() => {
+            popupWindow.classList.remove("popup-hide");
+            popupWindow.classList.remove("show-popup-window");
+          }, 1000);
+        };
+        popupWindow.addEventListener("click", this.clickEventHandler);
+      }
+
+      if (popupWindow.classList.contains("popup-hide")) {
+        popupWindow.classList.remove("popup-hide");
+      }
+      popupWindow.classList.add("show-popup-window");
+      windowTitle.textContent = title;
+      cookiesTip.textContent = tip;
+    }, 800);
+
+    setTimeout(() => {
+      console.info(this.Jump);
+      if (url && !this.Jump) {
+        this.Jump = false;
+      }
+      if (!popupWindow.classList.contains("popup-hide") && !popupWindow.className === '') {
+        popupWindow.classList.add("popup-hide");
+      }
+
+      // 处理队列中的下一个弹出窗口
+      this.processing = false;
+      this.processQueue();
+    }, duration);
   },
 };
