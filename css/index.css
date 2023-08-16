@@ -16110,7 +16110,7 @@ kbd {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
   border-radius: 15px;
   -webkit-box-shadow: var(--anzhiyu-shadow-blackdeep);
