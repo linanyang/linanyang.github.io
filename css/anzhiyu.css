@@ -3,3 +3,51 @@
   font-display: swap;
   src: url('/fonts/FiraCode.woff2') format("truetype");  
 }
+
+  // post
+  &.post-bg
+    height: 400px
+    #post-top-cover 
+      width: 70%;
+      height: 100%;
+      position: relative;
+      margin: 0 -20% 0 auto;
+      overflow: hidden;
+      margin-bottom: 0;
+      user-select: none
+      transform: rotate(10deg) translateY(-10%) scale(2);
+      if !hexo-config('mainTone.enable')
+        filter: blur(10px) brightness(60%);
+        animation: none;
+        transition: filter 0s
+        margin: auto
+        width: auto
+        &::after
+          display: none
+        img
+          border-radius: 0
+      else
+        filter: blur(10px);
+        opacity: 0.5;
+        animation: showCover 1s 0.3s backwards;
+
+      +maxWidth768()
+        margin: 0 0 0 auto;
+        transform: rotate(0deg) translateY(0) scale(1);
+        filter: blur(0px);
+        width: 100%;
+        if hexo-config('mainTone.enable')
+          position: fixed;
+          height: 30rem;
+        else
+          position: absolute;
+          height: 100vh;
+        z-index: 1;
+      &::after
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        box-shadow: 0px -130px 300px 60px var(--anzhiyu-bar-background) inset;
