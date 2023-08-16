@@ -16115,7 +16115,7 @@ kbd {
   border-radius: 15px;
   -webkit-box-shadow: var(--anzhiyu-shadow-blackdeep);
   box-shadow: var(--anzhiyu-shadow-blackdeep);
-  height: 200px;
+  height: 520px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -16141,7 +16141,7 @@ kbd {
   transform: scale(0.97);
 }
 .introduction-card .introduction-card-top {
-  height: 40%;
+  height: 80%;
   width: 100%;
   overflow: hidden;
   border-radius: 15px 15px 0 0;
@@ -16155,15 +16155,15 @@ kbd {
   opacity: 0.8;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: alpha(opacity=80);
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-bottom: 0.5rem;
   color: var(--anzhiyu-white);
 }
 .introduction-card .introduction-card-top .int-card-info .int-cardTitle {
-  font-size: 52px;
+  font-size: 46px;
   color: var(--anzhiyu-white);
-  font-weight: 600;
-  line-height: 2;
+  font-weight: 800;
+  line-height: 1.2;
 }
 .introduction-card .introduction-card-top img {
   width: 100%;
