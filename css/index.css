@@ -16115,7 +16115,7 @@ kbd {
   border-radius: 15px;
   -webkit-box-shadow: var(--anzhiyu-shadow-blackdeep);
   box-shadow: var(--anzhiyu-shadow-blackdeep);
-  height: 520px;
+  height: 360px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -16125,7 +16125,7 @@ kbd {
 }
 @media screen and (max-width: 1200px) {
   .introduction-card {
-    width: 80%;
+    width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -16141,7 +16141,7 @@ kbd {
   transform: scale(0.97);
 }
 .introduction-card .introduction-card-top {
-  height: 80%;
+  height: 60%;
   width: 100%;
   overflow: hidden;
   border-radius: 15px 15px 0 0;
@@ -16155,15 +16155,15 @@ kbd {
   opacity: 0.8;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
   filter: alpha(opacity=80);
-  font-size: 0.6rem;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
   color: var(--anzhiyu-white);
 }
 .introduction-card .introduction-card-top .int-card-info .int-cardTitle {
-  font-size: 36px;
+  font-size: 100px;
   color: var(--anzhiyu-white);
-  font-weight: 700;
-  line-height: 1.1;
+  font-weight: 1000;
+  line-height: 2;
 }
 .introduction-card .introduction-card-top img {
   width: 100%;
