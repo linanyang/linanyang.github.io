@@ -1,3 +1,7 @@
+:root {
+  --anzhiyu-main: #33967ccc;
+}
+
 @font-face {
   font-family: 'FiraCode';
   font-display: swap;
