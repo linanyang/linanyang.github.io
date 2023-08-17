@@ -11,13 +11,11 @@
 }
 
 /* intCard卡片式外链标签调整 */
-.introduction-card .introduction-card-top {
-  height: 80%;
+.introduction-card {
   width: 100%;
-  overflow: hidden;
-  border-radius: 15px 15px 0 0;
-  position: relative;
+  height: 520px;
 }
+
 @media screen and (max-width: 1200px) {
   .introduction-card {
     width: 100%;
