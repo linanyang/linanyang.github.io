@@ -1,23 +1,46 @@
-:root {
-  --anzhiyu-main: #33967ccc;
-}
-
 @font-face {
   font-family: 'FiraCode';
   font-display: swap;
   src: url('/fonts/FiraCode.woff2') format("truetype");  
 }
+
+/* 顶图遮罩居中显示 */
 #page-header.post-bg #post-top-cover::after {
   -webkit-box-shadow: 0px -130px 300px 60px var(--anzhiyu-bar-background) inset;
   box-shadow: 0px -130px 300px 60px var(--anzhiyu-bar-background) inset;
 }
-.introduction-card {
-  height: 320px;
-}
+
+/* intCard卡片式外链标签调整 */
 .introduction-card .introduction-card-top {
-  height: 40%;
+  height: 80%;
   width: 100%;
   overflow: hidden;
   border-radius: 15px 15px 0 0;
   position: relative;
 }
+@media screen and (max-width: 1200px) {
+  .introduction-card {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .introduction-card {
+    width: 100%;
+  }
+}
+/*
+.introduction-card .introduction-card-top .int-card-info .int-tip {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--anzhiyu-white);
+}
+.introduction-card .introduction-card-top .int-card-info .int-cardTitle {
+  font-size: 46px;
+  color: var(--anzhiyu-white);
+  font-weight: 800;
+  line-height: 1.2;
+}
+*/
