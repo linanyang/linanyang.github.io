@@ -10,3 +10,10 @@
 .introduction-card {
   height: 320px;
 }
+.introduction-card .introduction-card-top {
+  height: 40%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+  position: relative;
+}
