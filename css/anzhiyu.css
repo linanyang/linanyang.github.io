@@ -13,9 +13,8 @@
 /* intCard卡片式外链标签调整 */
 .introduction-card {
   width: 100%;
-  height: 520px;
+  height: 260px;
 }
-
 @media screen and (max-width: 1200px) {
   .introduction-card {
     width: 100%;
