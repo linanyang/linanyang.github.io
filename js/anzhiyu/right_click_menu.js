@@ -277,13 +277,6 @@ rm.copyPageUrl = function (url) {
   rm.hideRightMenu();
 };
 
-rm.sharePage = function () {
-  var content = window.location.href;
-  rm.copyUrl(url);
-  anzhiyu.snackbarShow("复制链接地址成功", false, 2000);
-  rm.hideRightMenu();
-};
-
 // 复制当前选中文本
 var selectTextNow = "";
 document.onmouseup = document.ondblclick = selceText;
@@ -412,8 +405,6 @@ function addRightMenuClickEvent() {
     link.addEventListener("click", rm.hideRightMenu);
   });
 
-  document.getElementById("menu-darkmode").addEventListener("click", anzhiyu.switchDarkMode);
-
   document.getElementById("menu-home") &&
     document.getElementById("menu-home").addEventListener("click", function () {
       window.location.href = window.location.origin;
@@ -432,7 +423,9 @@ function addRightMenuClickEvent() {
     event.preventDefault(); // Prevent the default context menu from appearing
   });
 
-  document.getElementById("menu-copy").addEventListener("click", rm.copyPageUrl);
+  document.getElementById("menu-copy").addEventListener("click", () => {
+    rm.copyPageUrl();
+  });
 
   document.getElementById("menu-pastetext").addEventListener("click", rm.pasteText);
 

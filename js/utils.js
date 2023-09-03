@@ -324,44 +324,6 @@ const anzhiyu = {
       this.changeThemeMetaColor(themeColor);
     }
   },
-  switchDarkMode: () => {
-    // Switch Between Light And Dark Mode
-    const nowMode = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-    const rightMenu = document.getElementById("rightMenu");
-    if (nowMode === "light") {
-      activateDarkMode();
-      saveToLocal.set("theme", "dark", 2);
-      GLOBAL_CONFIG.Snackbar !== undefined && anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
-      rightMenu.querySelector(".menu-darkmode-text").textContent = "浅色模式";
-    } else {
-      activateLightMode();
-      saveToLocal.set("theme", "light", 2);
-      GLOBAL_CONFIG.Snackbar !== undefined && anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
-      rightMenu.querySelector(".menu-darkmode-text").textContent = "深色模式";
-    }
-    // handle some cases
-    typeof runMermaid === "function" && window.runMermaid();
-    rm && rm.hideRightMenu();
-    anzhiyu.darkModeStatus();
-
-    // const root = document.querySelector(":root");
-    // root.style.setProperty("--anzhiyu-bar-background", "var(--anzhiyu-meta-theme-color)");
-    // anzhiyu.initThemeColor();
-
-    // 要改回来默认主色
-    // document.documentElement.style.setProperty(
-    //   "--anzhiyu-main",
-    //   getComputedStyle(document.documentElement).getPropertyValue("--anzhiyu-theme")
-    // );
-    // document.documentElement.style.setProperty(
-    //   "--anzhiyu-theme-op",
-    //   getComputedStyle(document.documentElement).getPropertyValue("--anzhiyu-main") + "23"
-    // );
-    // document.documentElement.style.setProperty(
-    //   "--anzhiyu-theme-op-deep",
-    //   getComputedStyle(document.documentElement).getPropertyValue("--anzhiyu-main") + "dd"
-    // );
-  },
   //是否是文章页
   is_Post: function () {
     var url = window.location.href; //获取url
@@ -467,6 +429,30 @@ const anzhiyu = {
       }
     }
     rm.hideRightMenu();
+  },
+  initPaginationObserver: () => {
+    const commentElement = document.getElementById("post-comment");
+    const paginationElement = document.getElementById("pagination");
+
+    if (commentElement && paginationElement) {
+      new IntersectionObserver(entries => {
+        const commentBarrage = document.querySelector(".comment-barrage");
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            paginationElement.classList.add("show-window");
+            if (commentBarrage) {
+              commentBarrage.style.bottom = "-200px";
+            }
+          } else {
+            paginationElement.classList.remove("show-window");
+            if (commentBarrage) {
+              commentBarrage.style.bottom = "0px";
+            }
+          }
+        });
+      }).observe(commentElement);
+    }
   },
   // 初始化即刻
   initIndexEssay: function () {
@@ -711,18 +697,6 @@ const anzhiyu = {
       arr[i] = x[i].innerText;
     }
     return arr[0];
-  },
-
-  // 检测显示模式
-  darkModeStatus: function () {
-    let theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
-    const menuDarkmodeText = document.querySelector(".menu-darkmode-text");
-
-    if (theme === "light") {
-      menuDarkmodeText.textContent = "深色模式";
-    } else {
-      menuDarkmodeText.textContent = "浅色模式";
-    }
   },
 
   //初始化console图标
@@ -1348,6 +1322,12 @@ const anzhiyu = {
 
     const authorInfoSayHiElement = document.getElementById("author-info__sayhi");
 
+    // 如果只有一个问候语，设置为默认值
+    if (greetings.length === 1) {
+      authorInfoSayHiElement.textContent = greetings[0];
+      return;
+    }
+
     let lastSayHello = authorInfoSayHiElement.textContent;
 
     let randomGreeting = lastSayHello;
@@ -1442,7 +1422,7 @@ const anzhiyuPopupManager = {
       if (url && !this.Jump) {
         this.Jump = false;
       }
-      if (!popupWindow.classList.contains("popup-hide") && !popupWindow.className === "") {
+      if (!popupWindow.classList.contains("popup-hide") && popupWindow.className != "") {
         popupWindow.classList.add("popup-hide");
       }
 
