@@ -428,7 +428,7 @@ const anzhiyu = {
         localStorage.removeItem("commentBarrageSwitch");
       }
     }
-    rm.hideRightMenu();
+    rm && rm.hideRightMenu();
   },
   initPaginationObserver: () => {
     const commentElement = document.getElementById("post-comment");
@@ -666,7 +666,7 @@ const anzhiyu = {
       navMusicEl.classList.add("stretch");
     }
     if (changePaly) document.querySelector("#nav-music meting-js").aplayer.toggle();
-    rm.hideRightMenu();
+    rm && rm.hideRightMenu();
   },
   // 音乐伸缩
   musicTelescopic: function () {
@@ -680,18 +680,18 @@ const anzhiyu = {
   //音乐上一曲
   musicSkipBack: function () {
     navMusicEl.querySelector("meting-js").aplayer.skipBack();
-    rm.hideRightMenu();
+    rm && rm.hideRightMenu();
   },
 
   //音乐下一曲
   musicSkipForward: function () {
     navMusicEl.querySelector("meting-js").aplayer.skipForward();
-    rm.hideRightMenu();
+    rm && rm.hideRightMenu();
   },
 
   //获取音乐中的名称
   musicGetName: function () {
-    var x = document.querySelector(".aplayer-title");
+    var x = document.querySelectorAll(".aplayer-title");
     var arr = [];
     for (var i = x.length - 1; i >= 0; i--) {
       arr[i] = x[i].innerText;
@@ -921,6 +921,11 @@ const anzhiyu = {
       anzhiyu.changeMusicList();
     });
 
+    // 默认加载的歌单
+    if (GLOBAL_CONFIG.music_page_default === "custom") {
+      anzhiyu.changeMusicList();
+    }
+
     // 监听键盘事件
     //空格控制音乐
     document.addEventListener("keydown", function (event) {
@@ -1002,17 +1007,30 @@ const anzhiyu = {
       }
     });
   },
-  // 监听按键
+  // 监听按键 - 页码跳转
   toPage: function () {
     var toPageText = document.getElementById("toPageText"),
       toPageButton = document.getElementById("toPageButton"),
       pageNumbers = document.querySelectorAll(".page-number"),
-      lastPageNumber = Number(pageNumbers[pageNumbers.length - 1].innerHTML),
       pageNumber = Number(toPageText.value);
 
+    // 获取最大页码，确保在分页元素不存在或为空时有默认值
+    var lastPageNumber = 1;
+    if (pageNumbers && pageNumbers.length > 0) {
+      // 遍历所有分页数字，找出最大值（避免分页显示不完整导致的问题）
+      pageNumbers.forEach(function (el) {
+        var num = Number(el.textContent);
+        if (!isNaN(num) && num > lastPageNumber) {
+          lastPageNumber = num;
+        }
+      });
+    }
+
     if (!isNaN(pageNumber) && pageNumber >= 1 && Number.isInteger(pageNumber)) {
-      var url = "/page/" + (pageNumber > lastPageNumber ? lastPageNumber : pageNumber) + "/";
-      toPageButton.href = pageNumber === 1 ? "/" : url;
+      // 确保页码不超过最大页码
+      var targetPage = pageNumber > lastPageNumber ? lastPageNumber : pageNumber;
+      var url = "/page/" + targetPage + "/#content-inner";
+      toPageButton.href = targetPage === 1 ? "/" : url;
     } else {
       toPageButton.href = "javascript:void(0);";
     }
@@ -1360,6 +1378,7 @@ const anzhiyuPopupManager = {
 
   popupShow(title, tip, url, duration) {
     const popupWindow = document.getElementById("popup-window");
+    if (!popupWindow) return;
     const windowTitle = popupWindow.querySelector(".popup-window-title");
     const windowContent = popupWindow.querySelector(".popup-window-content");
     const cookiesTip = windowContent.querySelector(".popup-tip");

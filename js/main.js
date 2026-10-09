@@ -9,6 +9,9 @@ var anzhiyu_intype = false;
 var anzhiyu_keyUpEvent_timeoutId = null;
 var anzhiyu_keyUpShiftDelayEvent_timeoutId = null;
 
+// 右键菜单对象
+var rm = null;
+
 var popupWindowTimer = null;
 
 var adjectives = [
@@ -173,6 +176,14 @@ document.addEventListener("DOMContentLoaded", function () {
     $nav.classList.toggle("hide-menu", hideMenuIndex);
   };
 
+  // 初始化右键菜单文本
+  const initRightMenu = () => {
+    $rightMenu = document.getElementById("rightMenu");
+    const mode = document.documentElement.getAttribute('data-theme');
+    const menuDarkmodeText = $rightMenu.querySelector(".menu-darkmode-text");
+    menuDarkmodeText.textContent = mode === "light" ? "深色模式" : "浅色模式";
+  }
+  
   // 初始化header
   const initAdjust = () => {
     adjustMenu(true);
@@ -221,51 +232,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const highLight = GLOBAL_CONFIG.highlight;
     if (!highLight) return;
 
-    const isHighlightCopy = highLight.highlightCopy;
-    const isHighlightLang = highLight.highlightLang;
+    const { highlightCopy, highlightLang, highlightHeightLimit, plugin } = highLight;
     const isHighlightShrink = GLOBAL_CONFIG_SITE.isHighlightShrink;
-    const highlightHeightLimit = highLight.highlightHeightLimit;
-    const isShowTool = isHighlightCopy || isHighlightLang || isHighlightShrink !== undefined;
+    const isShowTool = highlightCopy || highlightLang || isHighlightShrink !== undefined;
     const $figureHighlight =
-      highLight.plugin === "highlighjs"
+      plugin === "highlight.js"
         ? document.querySelectorAll("figure.highlight")
         : document.querySelectorAll('pre[class*="language-"]');
 
     if (!((isShowTool || highlightHeightLimit) && $figureHighlight.length)) return;
 
-    const isPrismjs = highLight.plugin === "prismjs";
-
-    let highlightShrinkEle = "";
-    let highlightCopyEle = "";
+    const isPrismjs = plugin === "prismjs";
     const highlightShrinkClass = isHighlightShrink === true ? "closed" : "";
+    const highlightShrinkEle =
+      isHighlightShrink !== undefined
+        ? '<i class="anzhiyufont anzhiyu-icon-angle-down expand ${highlightShrinkClass}"></i>'
+        : "";
+    const highlightCopyEle = highlightCopy
+      ? '<div class="copy-notice"></div><i class="anzhiyufont anzhiyu-icon-paste copy-button"></i>'
+      : "";
 
-    if (isHighlightShrink !== undefined) {
-      highlightShrinkEle = `<i class="anzhiyufont anzhiyu-icon-angle-down expand ${highlightShrinkClass}"></i>`;
-    }
+    const alertInfo = (ele, text) => {
+      if (GLOBAL_CONFIG.Snackbar !== undefined) {
+        anzhiyu.snackbarShow(text);
+      } else {
+        const prevEle = ele.previousElementSibling;
+        prevEle.textContent = text;
+        prevEle.style.opacity = 1;
+        setTimeout(() => {
+          prevEle.style.opacity = 0;
+        }, 800);
+      }
+    };
 
-    if (isHighlightCopy) {
-      highlightCopyEle = '<div class="copy-notice"></div><i class="anzhiyufont anzhiyu-icon-paste copy-button"></i>';
-    }
-
-    const copy = (text, ctx) => {
+    const copy = ctx => {
       if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
         document.execCommand("copy");
-        if (GLOBAL_CONFIG.Snackbar !== undefined) {
-          anzhiyu.snackbarShow(GLOBAL_CONFIG.copy.success);
-        } else {
-          const prevEle = ctx.previousElementSibling;
-          prevEle.innerText = GLOBAL_CONFIG.copy.success;
-          prevEle.style.opacity = 1;
-          setTimeout(() => {
-            prevEle.style.opacity = 0;
-          }, 700);
-        }
+        alertInfo(ctx, GLOBAL_CONFIG.copy.success);
       } else {
-        if (GLOBAL_CONFIG.Snackbar !== undefined) {
-          anzhiyu.snackbarShow(GLOBAL_CONFIG.copy.noSupport);
-        } else {
-          ctx.previousElementSibling.innerText = GLOBAL_CONFIG.copy.noSupport;
-        }
+        alertInfo(ctx, GLOBAL_CONFIG.copy.noSupport);
       }
     };
 
@@ -275,28 +280,17 @@ document.addEventListener("DOMContentLoaded", function () {
       $buttonParent.classList.add("copy-true");
       const selection = window.getSelection();
       const range = document.createRange();
-      if (isPrismjs) range.selectNodeContents($buttonParent.querySelectorAll("pre code")[0]);
-      else range.selectNodeContents($buttonParent.querySelectorAll("table .code pre")[0]);
+      const preCodeSelector = isPrismjs ? "pre code" : "table .code pre";
+      range.selectNodeContents($buttonParent.querySelectorAll(`${preCodeSelector}`)[0]);
       selection.removeAllRanges();
       selection.addRange(range);
-      const text = selection.toString();
-      copy(text, ele.lastChild);
+      copy(ele.lastChild);
       selection.removeAllRanges();
       $buttonParent.classList.remove("copy-true");
     };
 
     const highlightShrinkFn = ele => {
-      const $nextEle = [...ele.parentNode.children].slice(1);
-      ele.firstChild.classList.toggle("closed");
-      if (anzhiyu.isHidden($nextEle[$nextEle.length - 1])) {
-        $nextEle.forEach(e => {
-          e.style.display = "block";
-        });
-      } else {
-        $nextEle.forEach(e => {
-          e.style.display = "none";
-        });
-      }
+      ele.classList.toggle("closed");
     };
 
     const highlightToolsFn = function (e) {
@@ -335,33 +329,29 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
-    if (isHighlightLang) {
-      if (isPrismjs) {
-        $figureHighlight.forEach(function (item) {
-          const langName = item.getAttribute("data-language") ? item.getAttribute("data-language") : "Code";
+    if (isPrismjs) {
+      $figureHighlight.forEach(item => {
+        if (highlightLang) {
+          const langName = item.getAttribute("data-language") || "Code";
           const highlightLangEle = `<div class="code-lang">${langName}</div>`;
           anzhiyu.wrap(item, "figure", { class: "highlight" });
           createEle(highlightLangEle, item);
-        });
-      } else {
-        $figureHighlight.forEach(function (item) {
-          let langName = item.getAttribute("class").split(" ")[1];
-          if (langName === "plain" || langName === undefined || langName === "plaintext") langName = "Code";
-          const highlightLangEle = `<div class="code-lang">${langName}</div>`;
-          createEle(highlightLangEle, item, "hl");
-        });
-      }
-    } else {
-      if (isPrismjs) {
-        $figureHighlight.forEach(function (item) {
+        } else {
           anzhiyu.wrap(item, "figure", { class: "highlight" });
           createEle("", item);
-        });
-      } else {
-        $figureHighlight.forEach(function (item) {
+        }
+      });
+    } else {
+      $figureHighlight.forEach(item => {
+        if (highlightLang) {
+          let langName = item.getAttribute("class").split(" ")[1];
+          if (langName === "plain" || langName === undefined) langName = "Code";
+          const highlightLangEle = `<div class="code-lang">${langName}</div>`;
+          createEle(highlightLangEle, item, "hl");
+        } else {
           createEle("", item, "hl");
-        });
-      }
+        }
+      });
     }
   };
 
@@ -700,37 +690,26 @@ document.addEventListener("DOMContentLoaded", function () {
     let $tocLink, $cardToc, autoScrollToc, isExpand;
     if (isToc) {
       const $cardTocLayout = document.getElementById("card-toc");
-      $cardToc = $cardTocLayout.getElementsByClassName("toc-content")[0];
+      $cardToc = $cardTocLayout.querySelector(".toc-content");
       $tocLink = $cardToc.querySelectorAll(".toc-link");
       isExpand = $cardToc.classList.contains("is-expand");
 
-      window.mobileToc = {
-        open: () => {
-          $cardTocLayout.style.cssText = "animation: toc-open .3s; opacity: 1; right: 55px";
-        },
-
-        close: () => {
-          $cardTocLayout.style.animation = "toc-close .2s";
-          setTimeout(() => {
-            $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''";
-          }, 100);
-        },
-      };
-
       // toc元素點擊
-      $cardToc.addEventListener("click", e => {
+      const tocItemClickFn = e => {
+        const target = e.target.closest(".toc-link");
+        if (!target) return;
+
         e.preventDefault();
-        const target = e.target.classList;
-        if (target.contains("toc-content")) return;
-        const $target = target.contains("toc-link") ? e.target : e.target.parentElement;
         anzhiyu.scrollToDest(
-          anzhiyu.getEleTop(document.getElementById(decodeURI($target.getAttribute("href")).replace("#", ""))) - 60,
+          anzhiyu.getEleTop(document.getElementById(decodeURI(target.getAttribute("href")).replace("#", ""))) - 60,
           300
         );
         if (window.innerWidth < 900) {
-          window.mobileToc.close();
+          $cardTocLayout.classList.remove("open");
         }
-      });
+      };
+
+      anzhiyu.addEventListenerPjax($cardToc, "click", tocItemClickFn);
 
       autoScrollToc = item => {
         const activePosition = item.getBoundingClientRect().top;
@@ -853,7 +832,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $body.classList.add("read-mode");
       const newEle = document.createElement("button");
       newEle.type = "button";
-      newEle.className = "fas fa-sign-out-alt exit-readmode";
+      newEle.className = "anzhiyufont anzhiyu-icon-xmark exit-readmode";
       $body.appendChild(newEle);
 
       const clickFn = () => {
@@ -900,9 +879,20 @@ document.addEventListener("DOMContentLoaded", function () {
       saveToLocal.set("aside-status", saveStatus, 2);
       $htmlDom.toggle("hide-aside");
     },
-    "mobile-toc-button": () => {
+    "mobile-toc-button": item => {
       // Show mobile toc
-      document.getElementById("card-toc").classList.toggle("open");
+      const tocEle = document.getElementById("card-toc");
+      tocEle.style.transformOrigin = `right ${item.getBoundingClientRect().top + 17}px`;
+      tocEle.style.transition = "transform 0.3s ease-in-out";
+      tocEle.classList.toggle("open");
+      tocEle.addEventListener(
+        "transitionend",
+        () => {
+          tocEle.style.transition = "";
+          tocEle.style.transformOrigin = "";
+        },
+        { once: true }
+      );
     },
     "chat-btn": () => {
       // Show chat
@@ -1106,7 +1096,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const commentContainer = document.getElementById("post-comment");
     const handleSwitchBtn = () => {
       commentContainer.classList.toggle("move");
-      if (!switchDone) {
+      if (!switchDone && typeof loadOtherComment === "function") {
         switchDone = true;
         loadOtherComment();
       }
@@ -1236,7 +1226,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //封面纯色
   const coverColor = async () => {
     const root = document.querySelector(":root");
-    const path = document.getElementById("post-top-bg")?.src;
+    const bg = document.getElementById("post-top-bg")
+    const path = bg?.src;
     if (!path) {
       // 非文章情况，直接设置不需要请求了
       root.style.setProperty("--anzhiyu-bar-background", "var(--anzhiyu-meta-theme-color)");
@@ -1285,6 +1276,39 @@ document.addEventListener("DOMContentLoaded", function () {
             getComputedStyle(document.documentElement).getPropertyValue("--anzhiyu-main") + "dd"
           );
         }
+      } else if (GLOBAL_CONFIG.mainTone.mode == "colorthief") {
+        const colorThief = new ColorThief();
+        bg.crossOrigin = "Anonymous";
+        const getColorFromImage = () => {
+          const rgb = colorThief.getColor(bg);
+          let value = colorHex(`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`);
+          if (getContrastYIQ(value) === "light") {
+            value = LightenDarkenColor(value, -40);
+          } else {
+            value = LightenDarkenColor(value, 40);
+          }
+          root.style.setProperty("--anzhiyu-bar-background", value);
+          requestAnimationFrame(() => {
+            anzhiyu.initThemeColor();
+          });
+          if (GLOBAL_CONFIG.mainTone.cover_change) {
+            document.documentElement.style.setProperty("--anzhiyu-main", value);
+            document.documentElement.style.setProperty(
+              "--anzhiyu-theme-op",
+              getComputedStyle(document.documentElement).getPropertyValue(
+                "--anzhiyu-main"
+              ) + "23"
+            );
+            document.documentElement.style.setProperty(
+              "--anzhiyu-theme-op-deep",
+              getComputedStyle(document.documentElement).getPropertyValue(
+                "--anzhiyu-main"
+              ) + "dd"
+            );
+          }
+          bg.removeEventListener("load", getColorFromImage);
+        };
+        bg.addEventListener("load", getColorFromImage);
       } else {
         const fallbackValue = "var(--anzhiyu-theme)";
         let fetchPath = "";
@@ -1468,7 +1492,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 监听nav是否被其他音频暂停⏸️
   const listenNavMusicPause = function () {
     const timer = setInterval(() => {
-      if (navMusicEl.querySelector("#nav-music meting-js").aplayer) {
+      if (navMusicEl && navMusicEl.querySelector("#nav-music meting-js").aplayer) {
         clearInterval(timer);
         let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
         let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
@@ -1608,7 +1632,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isEscapeKeyPressed) {
         anzhiyu.hideLoading();
         anzhiyu.hideConsole();
-        rm.hideRightMenu();
+        rm && rm.hideRightMenu();
       }
       const shortcutKeyDelay = GLOBAL_CONFIG.shortcutKey.delay ? GLOBAL_CONFIG.shortcutKey.delay : 100;
       const shortcutKeyShiftDelay = GLOBAL_CONFIG.shortcutKey.shiftDelay ? GLOBAL_CONFIG.shortcutKey.shiftDelay : 200;
@@ -1826,6 +1850,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200);
   };
 
+  initRightMenu();
   refreshFn();
   unRefreshFn();
 });
